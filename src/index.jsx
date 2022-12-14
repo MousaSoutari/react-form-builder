@@ -1,17 +1,18 @@
 /**
-  * <ReactFormBuilder />
-*/
+ * <ReactFormBuilder />
+ */
 
-import React from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { IntlProvider } from 'react-intl';
-import Preview from './preview';
-import Toolbar from './toolbar';
-import FormGenerator from './form';
-import store from './stores/store';
-import Registry from './stores/registry';
-import AppLocale from './language-provider';
+import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { IntlProvider } from "react-intl";
+import Preview from "./preview";
+import Toolbar from "./toolbar";
+import FormGenerator from "./form";
+import store from "./stores/store";
+import Registry from "./stores/registry";
+import AppLocale from "./language-provider";
+import "devextreme/dist/css/dx.light.css";
 
 class ReactFormBuilder extends React.Component {
   constructor(props) {
@@ -20,8 +21,10 @@ class ReactFormBuilder extends React.Component {
     this.state = {
       editMode: false,
       editElement: null,
+      showToolbar: false,
     };
     this.editModeOn = this.editModeOn.bind(this);
+    this.toggleToolbar = this.toggleToolbar.bind(this);
   }
 
   editModeOn(data, e) {
@@ -43,19 +46,30 @@ class ReactFormBuilder extends React.Component {
     }
   }
 
+  toggleToolbar(show) {
+    this.setState({
+      showToolbar: show,
+    });
+  }
+
   render() {
     const toolbarProps = {
       showDescription: this.props.show_description,
+      showToolbar: this.state.showToolbar,
+      toggleToolbar: this.toggleToolbar,
     };
 
-    const language = this.props.locale ? this.props.locale : 'en';
+    const language = this.props.locale ? this.props.locale : "en";
     const currentAppLocale = AppLocale[language];
-    if (this.props.toolbarItems) { toolbarProps.items = this.props.toolbarItems; }
+    if (this.props.toolbarItems) {
+      toolbarProps.items = this.props.toolbarItems;
+    }
     return (
       <DndProvider backend={HTML5Backend}>
         <IntlProvider
           locale={currentAppLocale.locale}
-          messages={currentAppLocale.messages}>
+          messages={currentAppLocale.messages}
+        >
           <div>
             {/* <div>
            <p>
@@ -80,12 +94,16 @@ class ReactFormBuilder extends React.Component {
                   editModeOn={this.editModeOn}
                   editMode={this.state.editMode}
                   variables={this.props.variables}
+                  toggleToolbar={this.toggleToolbar}
                   registry={Registry}
                   editElement={this.state.editElement}
                   renderEditForm={this.props.renderEditForm}
                   saveAlways={this.props.saveAlways}
                 />
-                <Toolbar {...toolbarProps} customItems={this.props.customToolbarItems} />
+                <Toolbar
+                  {...toolbarProps}
+                  customItems={this.props.customToolbarItems}
+                />
               </div>
             </div>
           </div>
@@ -96,12 +114,13 @@ class ReactFormBuilder extends React.Component {
 }
 
 function ReactFormGenerator(props) {
-  const language = props.locale ? props.locale : 'en';
+  const language = props.locale ? props.locale : "en";
   const currentAppLocale = AppLocale[language];
   return (
     <IntlProvider
       locale={currentAppLocale.locale}
-      messages={currentAppLocale.messages}>
+      messages={currentAppLocale.messages}
+    >
       <FormGenerator {...props} />
     </IntlProvider>
   );
@@ -116,5 +135,8 @@ FormBuilders.Registry = Registry;
 export default FormBuilders;
 
 export {
-  ReactFormBuilder, ReactFormGenerator, store as ElementStore, Registry,
+  ReactFormBuilder,
+  ReactFormGenerator,
+  store as ElementStore,
+  Registry,
 };
