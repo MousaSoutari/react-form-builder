@@ -17,6 +17,7 @@ import {
 } from "devextreme-react/popup";
 import { ScrollView } from "devextreme-react";
 
+
 // function isDefaultItem(item) {
 //   const keys = Object.keys(item);
 //   return keys.filter(x => x !== 'element' && x !== 'key' && x !== 'group_name').length === 0;
@@ -42,6 +43,13 @@ function buildItems(items, defaultItems) {
         found.group_name = x.group_name;
       }
     }
+    if (found) {
+      if (x.inherited !== false) {
+        found = { ...found, ...x };
+      } else if (x.group_name) {
+        found.group_name = x.group_name;
+      }
+    }
     return found || x;
   });
 }
@@ -52,6 +60,7 @@ function buildGroupItems(allItems) {
   const grouped = groupBy(gItems, (x) => x.group_name);
   const groupKeys = gItems
     .map((x) => x.group_name)
+
     .filter((v, i, self) => self.indexOf(v) === i);
   return { items, grouped, groupKeys };
 }
@@ -415,6 +424,7 @@ class Toolbar extends React.Component {
 
     elementOptions.canHavePageBreakBefore =
       item.canHavePageBreakBefore !== false;
+
     elementOptions.canHaveAlternateForm = item.canHaveAlternateForm !== false;
     elementOptions.canHaveDisplayHorizontal =
       item.canHaveDisplayHorizontal !== false;
@@ -499,6 +509,7 @@ class Toolbar extends React.Component {
     />
   );
 
+
   render() {
     const { items, grouped, groupKeys } = buildGroupItems(this.state.items);
     return (
@@ -531,6 +542,8 @@ class Toolbar extends React.Component {
             </ul>
           </ScrollView>
         </Popup>
+
+    
       </div>
     );
   }

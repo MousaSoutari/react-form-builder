@@ -56,6 +56,22 @@ const store = new Store({
       const newElement = structuredClone(element);
       data.push(newElement);
       this.setData(context, data, saveAlways);
+}
+
+    deleteLastItem(context) {
+      const { lastItem } = context.state;
+      if (lastItem) {
+        this.delete(context, lastItem);
+        context.commit('setLastItem', null);
+      }
+    },
+
+    resetLastItem(context) {
+      const { lastItem } = context.state;
+      if (lastItem) {
+        context.commit('setLastItem', null);
+        // console.log('resetLastItem');
+      }
     },
 
     post(context) {
@@ -68,6 +84,11 @@ const store = new Store({
       const newData = elements.filter((x) => x && !x.parentId);
       elements.filter((x) => x && x.parentId).forEach((x) => newData.push(x));
       this.setData(context, newData, saveAlways);
+    },
+
+    insertItem(context, item) {
+      // console.log('insertItem', item);
+      context.commit('setLastItem', item.isContainer ? null : item);
     },
 
     save(data) {
@@ -90,11 +111,18 @@ const store = new Store({
       state.saveAlways = payload;
       return state;
     },
+    setLastItem(state, payload) {
+      // eslint-disable-next-line no-param-reassign
+      state.lastItem = payload;
+      console.log('setLastItem', payload);
+      return state;
+    },
   },
 
   initialState: {
     data: [],
     saveAlways: true,
+    lastItem: null,
   },
 });
 

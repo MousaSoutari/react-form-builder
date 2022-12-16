@@ -9,7 +9,7 @@ import ComponentRight from "../form-elements/component-right";
 
 const accepts = [ItemTypes.BOX, ItemTypes.CARD];
 
-class MultiColumnRow extends React.Component {
+class MultiColumnRowBase extends React.Component {
   render() {
     const {
       controls,
@@ -88,9 +88,12 @@ const ThreeColumnRow = ({ data, class_name, ...rest }) => {
   if (!data.childItems) {
     // eslint-disable-next-line no-param-reassign
     data.childItems = [null, null, null];
-    data.isContainer = true;
-  }
-  return <MultiColumnRow {...rest} className={className} data={data} />;
+  return (
+    <MultiColumnRowBase {...rest} className={className} data={data} />
+  );
 };
 
+
+
 export { TwoColumnRow, ThreeColumnRow };
+

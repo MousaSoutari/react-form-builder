@@ -244,6 +244,7 @@ export default class Preview extends React.Component {
       data.splice(hoverIndex, 0, item);
       this.saveData(item, hoverIndex, hoverIndex);
       store.dispatch("insertItem", item);
+
     }
   }
 

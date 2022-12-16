@@ -798,6 +798,7 @@ class Image extends React.Component {
           <ComponentHeader {...this.props} />
         </div>
         <ComponentRight {...this.props} />
+
       </div>
     );
   }
@@ -1228,6 +1229,7 @@ class Range extends React.Component {
       i <= parseInt(props.max_value, 10);
       i += parseInt(props.step, 10)
     ) {
+
       datalist.push(i);
     }
 

@@ -40,9 +40,11 @@ const saveUrl = "/api/formdata";
 //     key: 'Image',
 //   },
 //   {
+//     group_name: 'Multi Column Row',
 //     key: 'TwoColumnRow'
 //   },
 //   {
+//     group_name: 'Multi Column Row',
 //     key: 'ThreeColumnRow'
 //   },
 //   {
@@ -58,6 +60,7 @@ const saveUrl = "/api/formdata";
 //     label: 'Label Test',
 //   },
 //   {
+//     group_name: 'Custom Element',
 //     key: 'MyInput',
 //     element: 'CustomElement',
 //     component: MyInput,

@@ -62,6 +62,7 @@ class CustomElement extends Component {
           <ComponentHeader {...this.props} />
         </div>
         <ComponentRight {...this.props} />
+
       </div>
     );
   }
