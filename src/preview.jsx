@@ -271,7 +271,7 @@ export default class Preview extends React.Component {
     store.dispatch('updateOrder', newData.data);
   }
 
-  getElement(item, index) {
+  getElement(item, index, rightComponent) {
     if (item.custom) {
       if (!item.component || typeof item.component !== 'function') {
         // eslint-disable-next-line no-param-reassign
@@ -300,6 +300,7 @@ export default class Preview extends React.Component {
         getDataById={this.getDataById}
         setAsChild={this.setAsChild}
         removeChild={this.removeChild}
+        rightComponent={this.props.rightComponent}
         _onDestroy={this._onDestroy}
         _onCopy={this._onCopy}
         _onInsertAbove={this._onInsertAbove}
@@ -329,7 +330,9 @@ export default class Preview extends React.Component {
       classes += ' is-editing';
     }
     const data = this.state.data.filter((x) => !!x && !x.parentId);
-    const items = data.map((item, index) => this.getElement(item, index));
+    const items = data.map((item, index) =>
+      this.getElement(item, index, this.props.rightComponent)
+    );
     return (
       <div className={classes}>
         <div className="edit-form" ref={this.editForm}>
@@ -362,4 +365,5 @@ Preview.defaultProps = {
   editElement: null,
   className: 'col-md-12 react-form-builder-preview float-left',
   renderEditForm: (props) => <FormElementsEdit {...props} />,
+  rightComponent: (props) => <div {...props} />,
 };

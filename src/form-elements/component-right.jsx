@@ -9,7 +9,7 @@ const ComponentRight = (props) => {
       {props.data.pageBreakBefore && (
         <div className="preview-page-break">Page Break</div>
       )}
-      {props.components}
+      {props.rightComponent}
     </div>
   );
 };

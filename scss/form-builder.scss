@@ -124,7 +124,7 @@
               &.form-control {
                 width: 84.26%;
                 float: left;
-                &[type="checkbox"] {
+                &[type='checkbox'] {
                   border: none;
                   box-shadow: none;
                   margin-top: 0;
@@ -167,7 +167,7 @@
           margin: 0px !important;
           display: inline-flex;
           width: 100%;
-          .sortableItem-sequance {
+          .sortableItem-sequence {
             color: #a5a5a5;
             padding-right: 10px;
             flex: 0;
@@ -192,7 +192,7 @@
             a {
               cursor: move;
             }
-            input[type="date"] {
+            input[type='date'] {
               height: 42px;
             }
             .react-star-rating {
@@ -499,7 +499,7 @@
   border-radius: 5px;
   padding: 25px;
   text-align: center;
-  font: 20pt bold, "Vollkorn";
+  font: 20pt bold, 'Vollkorn';
   color: #bbb;
 }
 

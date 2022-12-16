@@ -13,6 +13,7 @@ import store from './stores/store';
 import Registry from './stores/registry';
 import AppLocale from './language-provider';
 import 'devextreme/dist/css/dx.light.css';
+import { th } from 'date-fns/locale';
 
 class ReactFormBuilder extends React.Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class ReactFormBuilder extends React.Component {
                   registry={Registry}
                   editElement={this.state.editElement}
                   renderEditForm={this.props.renderEditForm}
+                  rightComponent={this.props.rightComponent}
                   saveAlways={this.props.saveAlways}
                 />
                 <Toolbar

@@ -37,7 +37,7 @@ class MultiColumnRowBase extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="MultiColumnRow">
             <ComponentLabel {...this.props} />

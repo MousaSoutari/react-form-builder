@@ -129,6 +129,8 @@ export interface FormBuilderProps {
   saveAlways?: boolean;
   editMode?: boolean;
   renderEditForm?: (props: BaseElement) => React.ReactNode;
+  rightComponent?: React.ReactNode;
+
 }
 
 export class ReactFormBuilder extends React.Component<FormBuilderProps> {}

@@ -82,6 +82,7 @@ const App = () => (
     saveUrl={saveUrl}
     locale="en"
     saveAlways={false}
+    rightComponent={<div>Mousa</div>}
     // toolbarItems={items}
   />
 );

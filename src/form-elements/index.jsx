@@ -40,7 +40,7 @@ class Header extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <h3
             className={classNames}
@@ -79,7 +79,7 @@ class Paragraph extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <p
             className={classNames}
@@ -119,7 +119,7 @@ class Label extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <label
             className={classNames}
@@ -151,7 +151,7 @@ class LineBreak extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           {(this.props.index || this.props.index === 0) && (
             <h4>horizontal line</h4>
@@ -199,7 +199,7 @@ class TextInput extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -246,7 +246,7 @@ class EmailInput extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -294,7 +294,7 @@ class PhoneNumber extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -342,7 +342,7 @@ class NumberInput extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -389,7 +389,7 @@ class TextArea extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -436,7 +436,7 @@ class Dropdown extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -515,7 +515,7 @@ class Signature extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -600,7 +600,7 @@ class Tags extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -641,7 +641,7 @@ class Checkboxes extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel className="form-label" {...this.props} />
@@ -717,7 +717,7 @@ class RadioButtons extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel className="form-label" {...this.props} />
@@ -785,7 +785,7 @@ class Image extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style, style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           {this.props.data.src && (
             <img
@@ -838,7 +838,7 @@ class Rating extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -868,7 +868,7 @@ class HyperLink extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <a target="_blank" href={this.props.data.href}>
@@ -899,7 +899,7 @@ class Download extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <a
@@ -986,7 +986,7 @@ class Camera extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -1116,7 +1116,7 @@ class FileUpload extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
@@ -1265,7 +1265,7 @@ class Range extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
           )}
           <div className="form-group">
             <ComponentLabel {...this.props} />
