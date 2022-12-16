@@ -203,7 +203,7 @@ export default class FormElementsEdit extends React.Component {
           showTitle={true}
           title={this.props.element.text}
           container=".edit-panel"
-          width={"50%"}
+          width={600}
           height={600}
           onHiding={this.props.manualEditModeOff}
         >

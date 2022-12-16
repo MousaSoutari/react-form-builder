@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import ComponentHeader from './component-header';
-import ComponentLabel from './component-label';
+import React, { Component } from "react";
+import ComponentHeader from "./component-header";
+import ComponentLabel from "./component-label";
+import ComponentRight from "./component-right";
 
 class CustomElement extends Component {
   constructor(props) {
@@ -19,26 +20,49 @@ class CustomElement extends Component {
     }
 
     if (this.props.read_only) {
-      props.disabled = 'disabled';
+      props.disabled = "disabled";
     }
 
     // Return if component is invalid.
     if (!this.props.data.component) return null;
     const Element = this.props.data.component;
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let containerClasses = "ContainerItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      containerClasses += " alwaysbreak";
+    }
+
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
 
     return (
-      <div className={baseClasses}>
-        <ComponentHeader {...this.props} />
-        { bare ?
-          <Element data={this.props.data} {...this.props.data.props} {...props} /> :
-          <div className="form-group">
-            <ComponentLabel className="form-label" {...this.props} />
-            <Element data={this.props.data} {...this.props.data.props} {...props} />
-          </div>
-        }
+      <div className={containerClasses}>
+        <div className={baseClasses}>
+          {(this.props.index || this.props.index === 0) && (
+            <h3 className="sortableItem-sequance">{this.props.index + 1}</h3>
+          )}
+          {bare ? (
+            <Element
+              data={this.props.data}
+              {...this.props.data.props}
+              {...props}
+            />
+          ) : (
+            <div className="form-group">
+              <Element
+                data={this.props.data}
+                {...this.props.data.props}
+                {...props}
+              />
+              <ComponentLabel className="form-label" {...this.props} />
+            </div>
+          )}
+          <ComponentHeader {...this.props} />
+        </div>
+        <ComponentRight {...this.props} />
+
       </div>
     );
   }

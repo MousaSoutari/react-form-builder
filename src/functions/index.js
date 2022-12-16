@@ -19,6 +19,7 @@ function groupBy(list, keyGetter) {
     } else {
       collection.push(item);
     }
+
   });
   return map;
 }
@@ -30,4 +31,5 @@ export {
   draftToHtml,
   Editor,
   groupBy,
+
 };
