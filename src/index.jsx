@@ -22,6 +22,7 @@ class ReactFormBuilder extends React.Component {
       editMode: false,
       editElement: null,
       showToolbar: false,
+      otherItem: null,
     };
     this.editModeOn = this.editModeOn.bind(this);
     this.toggleToolbar = this.toggleToolbar.bind(this);
@@ -46,9 +47,10 @@ class ReactFormBuilder extends React.Component {
     }
   }
 
-  toggleToolbar(show) {
+  toggleToolbar(show, otherItem = null) {
     this.setState({
       showToolbar: show,
+      otherItem,
     });
   }
 
@@ -57,6 +59,7 @@ class ReactFormBuilder extends React.Component {
       showDescription: this.props.show_description,
       showToolbar: this.state.showToolbar,
       toggleToolbar: this.toggleToolbar,
+      otherItem: this.state.otherItem,
     };
 
     const language = this.props.locale ? this.props.locale : "en";

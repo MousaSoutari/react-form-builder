@@ -38,6 +38,8 @@ export default class Preview extends React.Component {
     this.setAsChild = this.setAsChild.bind(this);
     this.removeChild = this.removeChild.bind(this);
     this._onDestroy = this._onDestroy.bind(this);
+    this._onCopy = this._onCopy.bind(this);
+    this._onInsertAbove = this._onInsertAbove.bind(this);
   }
 
   componentDidMount() {
@@ -57,9 +59,9 @@ export default class Preview extends React.Component {
   }
 
   editModeOff = (e) => {
-    if (this.editForm.current && !this.editForm.current.contains(e.target)) {
-      this.manualEditModeOff();
-    }
+    // if (this.editForm.current && !this.editForm.current.contains(e.target)) {
+    //   this.manualEditModeOff();
+    // }
   };
 
   manualEditModeOff = () => {
@@ -118,6 +120,22 @@ export default class Preview extends React.Component {
       });
     }
     store.dispatch("delete", item);
+  }
+
+  _onInsertAbove(item) {
+    this.props.toggleToolbar(true, item);
+  }
+
+  _onCopy(item) {
+    if (item.childItems) {
+      item.childItems.forEach((x) => {
+        const child = this.getDataById(x);
+        if (child) {
+          store.dispatch("copy", child);
+        }
+      });
+    }
+    store.dispatch("copy", item);
   }
 
   getDataById(id) {
@@ -283,6 +301,8 @@ export default class Preview extends React.Component {
         setAsChild={this.setAsChild}
         removeChild={this.removeChild}
         _onDestroy={this._onDestroy}
+        _onCopy={this._onCopy}
+        _onInsertAbove={this._onInsertAbove}
       />
     );
   }

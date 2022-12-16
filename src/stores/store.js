@@ -1,5 +1,5 @@
-import Store from 'beedle';
-import { get, post } from './requests';
+import Store from "beedle";
+import { get, post } from "./requests";
 
 let _saveUrl;
 let _onPost;
@@ -8,25 +8,25 @@ let _onLoad;
 const store = new Store({
   actions: {
     setData(context, data, saveData) {
-      context.commit('setData', data);
+      context.commit("setData", data);
       if (saveData) this.save(data);
     },
 
     load(context, { loadUrl, saveUrl, data, saveAlways }) {
       _saveUrl = saveUrl;
       const saveA = saveAlways || saveAlways === undefined;
-      context.commit('setSaveAlways', saveA);
+      context.commit("setSaveAlways", saveA);
       if (_onLoad) {
-        _onLoad().then(x => {
+        _onLoad().then((x) => {
           if (data && data.length > 0 && x.length === 0) {
-            data.forEach(y => x.push(y));
+            data.forEach((y) => x.push(y));
           }
           this.setData(context, x);
         });
       } else if (loadUrl) {
-        get(loadUrl).then(x => {
+        get(loadUrl).then((x) => {
           if (data && data.length > 0 && x.length === 0) {
-            data.forEach(y => x.push(y));
+            data.forEach((y) => x.push(y));
           }
           this.setData(context, x);
         });
@@ -35,15 +35,26 @@ const store = new Store({
       }
     },
 
-    create(context, element) {
+    create(context, { element, otherItem = null }) {
       const { data, saveAlways } = context.state;
-      data.push(element);
+      if (otherItem !== null) {
+        data.splice(data.indexOf(otherItem), 0, element);
+      } else {
+        data.push(element);
+      }
       this.setData(context, data, saveAlways);
     },
 
     delete(context, element) {
       const { data, saveAlways } = context.state;
       data.splice(data.indexOf(element), 1);
+      this.setData(context, data, saveAlways);
+    },
+
+    copy(context, element) {
+      const { data, saveAlways } = context.state;
+      const newElement = structuredClone(element);
+      data.push(newElement);
       this.setData(context, data, saveAlways);
     },
 
@@ -54,8 +65,8 @@ const store = new Store({
 
     updateOrder(context, elements) {
       const { saveAlways } = context.state;
-      const newData = elements.filter(x => x && !x.parentId);
-      elements.filter(x => x && x.parentId).forEach(x => newData.push(x));
+      const newData = elements.filter((x) => x && !x.parentId);
+      elements.filter((x) => x && x.parentId).forEach((x) => newData.push(x));
       this.setData(context, newData, saveAlways);
     },
 

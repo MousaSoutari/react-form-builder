@@ -15,6 +15,7 @@ import {
   Position,
   ToolbarItem as dxToolbarItem,
 } from "devextreme-react/popup";
+import { ScrollView } from "devextreme-react";
 
 // function isDefaultItem(item) {
 //   const keys = Object.keys(item);
@@ -271,39 +272,6 @@ class Toolbar extends React.Component {
         field_name: "three_col_row_",
       },
       {
-        key: "FourColumnRow",
-        element: "MultiColumnRow",
-        canHaveAnswer: false,
-        name: intl.formatMessage({ id: "four-columns-row" }),
-        label: "",
-        icon: "fas fa-columns",
-        field_name: "four_col_row_",
-        col_count: 4,
-        class_name: "col-md-3",
-      },
-      {
-        key: "FiveColumnRow",
-        element: "MultiColumnRow",
-        canHaveAnswer: false,
-        name: intl.formatMessage({ id: "five-columns-row" }),
-        label: "",
-        icon: "fas fa-columns",
-        field_name: "five_col_row_",
-        col_count: 5,
-        class_name: "col",
-      },
-      {
-        key: "SixColumnRow",
-        element: "MultiColumnRow",
-        canHaveAnswer: false,
-        name: intl.formatMessage({ id: "six-columns-row" }),
-        label: "",
-        icon: "fas fa-columns",
-        field_name: "six_col_row_",
-        col_count: 6,
-        class_name: "col-md-2",
-      },
-      {
         key: "Image",
         name: intl.formatMessage({ id: "image" }),
         label: "",
@@ -517,16 +485,16 @@ class Toolbar extends React.Component {
     return elementOptions;
   }
 
-  _onClick(item) {
+  _onClick(item, otherItem = null) {
     // ElementActions.createElement(this.create(item));
-    store.dispatch("create", this.create(item));
+    store.dispatch("create", { element: this.create(item), otherItem });
   }
 
   renderItem = (item) => (
     <ToolbarItem
       data={item}
       key={item.key}
-      onClick={this._onClick.bind(this, item)}
+      onClick={this._onClick.bind(this, item, this.props.otherItem)}
       onCreate={this.create}
     />
   );
@@ -535,8 +503,7 @@ class Toolbar extends React.Component {
     const { items, grouped, groupKeys } = buildGroupItems(this.state.items);
     return (
       <div className="col-md-3 react-form-builder-toolbar float-right">
-        <h4></h4>
-        <div className="dx-viewport"></div>
+        <div className="toolbarpopup"></div>
         <Popup
           visible={this.props.showToolbar}
           dragEnabled={false}
@@ -544,24 +511,25 @@ class Toolbar extends React.Component {
           showCloseButton={true}
           showTitle={true}
           title={this.props.intl.formatMessage({ id: "toolbox" })}
-          container=".dx-viewport"
-          width={500}
+          container=".toolbarpopup"
+          width={600}
           height={600}
           onHiding={() => this.props.toggleToolbar(false)}
         >
           <Position at="center" my="center" collision="fit" />
-
-          <ul>
-            {items.map(this.renderItem)}
-            {groupKeys.map((k) => (
-              <ToolbarGroupItem
-                key={k}
-                name={k}
-                group={grouped.get(k)}
-                renderItem={this.renderItem}
-              />
-            ))}
-          </ul>
+          <ScrollView>
+            <ul>
+              {items.map(this.renderItem)}
+              {groupKeys.map((k) => (
+                <ToolbarGroupItem
+                  key={k}
+                  name={k}
+                  group={grouped.get(k)}
+                  renderItem={this.renderItem}
+                />
+              ))}
+            </ul>
+          </ScrollView>
         </Popup>
       </div>
     );

@@ -1,6 +1,6 @@
 {
-  "name": "react-form-builder2",
-  "version": "0.13.1",
+  "name": "react-form-builder-devextreme",
+  "version": "0.0.6",
   "description": "A complete form builder for react. Some changes to design",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
