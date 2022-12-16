@@ -1,5 +1,5 @@
-import React from "react";
-import HeaderBar from "./header-bar";
+import React from 'react';
+import HeaderBar from './header-bar';
 
 const ComponentHeader = (props) => {
   if (props.mutable) {

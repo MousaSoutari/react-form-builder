@@ -14,7 +14,6 @@ export const AppLanguages = [
     name: 'English',
     icon: 'us',
   },
-
 ];
 
 const AppLocale = {

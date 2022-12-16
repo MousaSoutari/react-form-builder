@@ -26,9 +26,9 @@ function getCustomElement(item, props) {
 
 function getElement(item, props) {
   if (!item) return null;
-  const Element = item.custom ?
-    () => getCustomElement(item, props) :
-    FormElements[item.element || item.key];
+  const Element = item.custom
+    ? () => getCustomElement(item, props)
+    : FormElements[item.element || item.key];
 
   return (
     <Fragment>
@@ -65,9 +65,21 @@ function isContainer(item) {
 }
 
 const Dustbin = React.forwardRef(
-  ({
-    draggedItem, parentIndex, canDrop, isOver, isOverCurrent, connectDropTarget, items, col, getDataById, ...rest
-  }, ref) => {
+  (
+    {
+      draggedItem,
+      parentIndex,
+      canDrop,
+      isOver,
+      isOverCurrent,
+      connectDropTarget,
+      items,
+      col,
+      getDataById,
+      ...rest
+    },
+    ref
+  ) => {
     const item = getDataById(items[col]);
     useImperativeHandle(
       ref,
@@ -80,7 +92,7 @@ const Dustbin = React.forwardRef(
           }
         },
       }),
-      [],
+      []
     );
 
     const element = getElement(item, rest);
@@ -98,21 +110,21 @@ const Dustbin = React.forwardRef(
 
     // console.log('sameCard, canDrop', sameCard, canDrop);
     return connectDropTarget(
-      <div style={!sameCard ? getStyle(backgroundColor) : getStyle('rgba(0, 0, 0, .03') }>
+      <div
+        style={
+          !sameCard ? getStyle(backgroundColor) : getStyle('rgba(0, 0, 0, .03')
+        }
+      >
         {element}
-      </div>,
+      </div>
     );
-  },
+  }
 );
 
 export default DropTarget(
   (props) => props.accepts,
   {
-    drop(
-      props,
-      monitor,
-      component,
-    ) {
+    drop(props, monitor, component) {
       if (!component) {
         return;
       }
@@ -133,7 +145,7 @@ export default DropTarget(
       }
 
       if (!isContainer(item)) {
-        (component).onDrop(item);
+        component.onDrop(item);
         if (item.data && typeof props.setAsChild === 'function') {
           const isNew = !item.data.id;
           const data = isNew ? item.onCreate(item.data) : item.data;
@@ -148,5 +160,5 @@ export default DropTarget(
     isOver: monitor.isOver(),
     isOverCurrent: monitor.isOver({ shallow: true }),
     canDrop: monitor.canDrop(),
-  }),
+  })
 )(Dustbin);

@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import React from "react";
+import React from 'react';
 
-import ComponentHeader from "../form-elements/component-header";
-import ComponentLabel from "../form-elements/component-label";
-import Dustbin from "./dustbin";
-import ItemTypes from "../ItemTypes";
-import ComponentRight from "../form-elements/component-right";
+import ComponentHeader from '../form-elements/component-header';
+import ComponentLabel from '../form-elements/component-label';
+import Dustbin from './dustbin';
+import ItemTypes from '../ItemTypes';
+import ComponentRight from '../form-elements/component-right';
 
 const accepts = [ItemTypes.BOX, ItemTypes.CARD];
 
@@ -23,14 +23,14 @@ class MultiColumnRowBase extends React.Component {
       index,
     } = this.props;
     const { childItems, pageBreakBefore } = data;
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -43,12 +43,12 @@ class MultiColumnRowBase extends React.Component {
             <ComponentLabel {...this.props} />
             <div className="row">
               {childItems.map((x, i) => (
-                <div key={`${i}_${x || "_"}`} className={className}>
+                <div key={`${i}_${x || '_'}`} className={className}>
                   {controls ? (
                     controls[i]
                   ) : (
                     <Dustbin
-                      style={{ width: "100%" }}
+                      style={{ width: '100%' }}
                       data={data}
                       accepts={accepts}
                       items={childItems}
@@ -74,7 +74,7 @@ class MultiColumnRowBase extends React.Component {
 }
 
 const TwoColumnRow = ({ data, class_name, ...rest }) => {
-  const className = class_name || "col-md-6";
+  const className = class_name || 'col-md-6';
   if (!data.childItems) {
     // eslint-disable-next-line no-param-reassign
     data.childItems = [null, null];
@@ -84,16 +84,12 @@ const TwoColumnRow = ({ data, class_name, ...rest }) => {
 };
 
 const ThreeColumnRow = ({ data, class_name, ...rest }) => {
-  const className = class_name || "col-md-4";
+  const className = class_name || 'col-md-4';
   if (!data.childItems) {
     // eslint-disable-next-line no-param-reassign
     data.childItems = [null, null, null];
-  return (
-    <MultiColumnRowBase {...rest} className={className} data={data} />
-  );
+    return <MultiColumnRowBase {...rest} className={className} data={data} />;
+  }
 };
 
-
-
 export { TwoColumnRow, ThreeColumnRow };
-

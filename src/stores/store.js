@@ -1,5 +1,5 @@
-import Store from "beedle";
-import { get, post } from "./requests";
+import Store from 'beedle';
+import { get, post } from './requests';
 
 let _saveUrl;
 let _onPost;
@@ -8,14 +8,14 @@ let _onLoad;
 const store = new Store({
   actions: {
     setData(context, data, saveData) {
-      context.commit("setData", data);
+      context.commit('setData', data);
       if (saveData) this.save(data);
     },
 
     load(context, { loadUrl, saveUrl, data, saveAlways }) {
       _saveUrl = saveUrl;
       const saveA = saveAlways || saveAlways === undefined;
-      context.commit("setSaveAlways", saveA);
+      context.commit('setSaveAlways', saveA);
       if (_onLoad) {
         _onLoad().then((x) => {
           if (data && data.length > 0 && x.length === 0) {
@@ -56,7 +56,7 @@ const store = new Store({
       const newElement = structuredClone(element);
       data.push(newElement);
       this.setData(context, data, saveAlways);
-}
+    },
 
     deleteLastItem(context) {
       const { lastItem } = context.state;

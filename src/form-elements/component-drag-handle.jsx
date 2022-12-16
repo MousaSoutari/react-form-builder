@@ -13,9 +13,7 @@ const style = {
 
 const dragHandleSource = {
   beginDrag(props) {
-    const {
-      data, index, onDestroy, setAsChild, getDataById,
-    } = props;
+    const { data, index, onDestroy, setAsChild, getDataById } = props;
     return {
       itemType: ItemTypes.BOX,
       index: data.parentId ? -1 : index,
@@ -46,7 +44,11 @@ class DragHandle extends PureComponent {
 
   render() {
     const { connectDragSource } = this.props;
-    return connectDragSource(<div className="btn is-isolated" style={style} ><i className="is-isolated fas fa-grip-vertical"></i></div>);
+    return connectDragSource(
+      <div className="btn is-isolated" style={style}>
+        <i className="is-isolated fas fa-grip-vertical"></i>
+      </div>
+    );
   }
 }
 
@@ -57,5 +59,5 @@ export default DragSource(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
-  }),
+  })
 )(DragHandle);

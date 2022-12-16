@@ -1,6 +1,6 @@
 /**
-  * <FormValidator />
-  */
+ * <FormValidator />
+ */
 
 import React from 'react';
 import xss from 'xss';
@@ -34,9 +34,12 @@ export default class FormValidator extends React.Component {
   }
 
   componentDidMount() {
-    this.subscription = this.props.emitter.addListener('formValidation', (errors) => {
-      this.setState({ errors });
-    });
+    this.subscription = this.props.emitter.addListener(
+      'formValidation',
+      (errors) => {
+        this.setState({ errors });
+      }
+    );
   }
 
   componentWillUnmount() {
@@ -49,23 +52,31 @@ export default class FormValidator extends React.Component {
   }
 
   render() {
-    const errors = this.state.errors.map((error, index) => <li key={`error_${index}`} dangerouslySetInnerHTML={{ __html: myxss.process(error) }} />);
+    const errors = this.state.errors.map((error, index) => (
+      <li
+        key={`error_${index}`}
+        dangerouslySetInnerHTML={{ __html: myxss.process(error) }}
+      />
+    ));
 
     return (
       <div>
-        { this.state.errors.length > 0 &&
+        {this.state.errors.length > 0 && (
           <div className="alert alert-danger validation-error">
             <div className="clearfix">
               <i className="fas fa-exclamation-triangle float-left"></i>
-              <ul className="float-left">
-                {errors}
-              </ul>
+              <ul className="float-left">{errors}</ul>
             </div>
             <div className="clearfix">
-              <a className="float-right btn btn-default btn-sm btn-danger" onClick={this.dismissModal.bind(this)}><IntlMessages id="dismiss" /></a>
+              <a
+                className="float-right btn btn-default btn-sm btn-danger"
+                onClick={this.dismissModal.bind(this)}
+              >
+                <IntlMessages id="dismiss" />
+              </a>
             </div>
           </div>
-        }
+        )}
       </div>
     );
   }

@@ -2,9 +2,9 @@
  * <HeaderBar />
  */
 
-import React from "react";
+import React from 'react';
 // import Grip from '../multi-column/grip';
-import DragHandle from "./component-drag-handle";
+import DragHandle from './component-drag-handle';
 
 export default class HeaderBar extends React.Component {
   render() {
@@ -32,7 +32,7 @@ export default class HeaderBar extends React.Component {
             <i className="is-isolated fas fa-plus"></i>
           </div>
 
-          {this.props.data.element !== "LineBreak" && (
+          {this.props.data.element !== 'LineBreak' && (
             <div
               className="btn is-isolated"
               onClick={this.props.editModeOn.bind(

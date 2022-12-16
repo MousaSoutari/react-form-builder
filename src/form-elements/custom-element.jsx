@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import ComponentHeader from "./component-header";
-import ComponentLabel from "./component-label";
-import ComponentRight from "./component-right";
+import React, { Component } from 'react';
+import ComponentHeader from './component-header';
+import ComponentLabel from './component-label';
+import ComponentRight from './component-right';
 
 class CustomElement extends Component {
   constructor(props) {
@@ -20,21 +20,21 @@ class CustomElement extends Component {
     }
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
 
     // Return if component is invalid.
     if (!this.props.data.component) return null;
     const Element = this.props.data.component;
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -62,7 +62,6 @@ class CustomElement extends Component {
           <ComponentHeader {...this.props} />
         </div>
         <ComponentRight {...this.props} />
-
       </div>
     );
   }

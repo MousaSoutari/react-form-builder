@@ -11,12 +11,12 @@ export function post(url, data) {
     method: 'POST',
     headers,
     body: JSON.stringify(data),
-  }).then(response => response);
+  }).then((response) => response);
 }
 
 export function get(url) {
   return fetch(url, {
     method: 'GET',
     headers,
-  }).then(response => response.json());
+  }).then((response) => response.json());
 }

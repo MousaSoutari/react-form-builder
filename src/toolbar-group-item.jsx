@@ -1,6 +1,6 @@
 /**
-  * <ToolbarGroupItem />
-  */
+ * <ToolbarGroupItem />
+ */
 
 import React, { useState } from 'react';
 
@@ -17,13 +17,15 @@ function ToolbarGroupItem(props) {
   return (
     <li>
       <div className="toolbar-group-item">
-        <button className="btn btn-link btn-block text-left" type="button" onClick={onClick}>
+        <button
+          className="btn btn-link btn-block text-left"
+          type="button"
+          onClick={onClick}
+        >
           {name}
         </button>
         <div className={classShow}>
-          <ul>
-            { group.map(renderItem) }
-          </ul>
+          <ul>{group.map(renderItem)}</ul>
         </div>
       </div>
     </li>

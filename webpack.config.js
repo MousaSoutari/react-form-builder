@@ -1,27 +1,27 @@
-var path = require("path");
-var webpack = require("webpack");
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-  entry: "./app.js",
-  devtool: "source-map",
+  entry: './app.js',
+  devtool: 'source-map',
   output: {
-    path: path.resolve("./public"),
-    filename: "app.js",
+    path: path.resolve('./public'),
+    filename: 'app.js',
   },
   resolve: {
-    extensions: [".js", ".jsx", ".scss", ".css", ".json"],
+    extensions: ['.js', '.jsx', '.scss', '.css', '.json'],
     alias: {
-      jquery: path.join(__dirname, "./jquery-stub.js"),
+      jquery: path.join(__dirname, './jquery-stub.js'),
       globalize$: path.resolve(
         __dirname,
-        "node_modules/globalize/dist/globalize.js"
+        'node_modules/globalize/dist/globalize.js'
       ),
       globalize: path.resolve(
         __dirname,
-        "node_modules/globalize/dist/globalize"
+        'node_modules/globalize/dist/globalize'
       ),
-      cldr$: path.resolve(__dirname, "node_modules/cldrjs/dist/cldr.js"),
-      cldr: path.resolve(__dirname, "node_modules/cldrjs/dist/cldr"),
+      cldr$: path.resolve(__dirname, 'node_modules/cldrjs/dist/cldr.js'),
+      cldr: path.resolve(__dirname, 'node_modules/cldrjs/dist/cldr'),
     },
   },
   plugins: [
@@ -33,22 +33,22 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.js$|.jsx?$/,
-        use: [{ loader: "babel-loader" }],
+        use: [{ loader: 'babel-loader' }],
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sassOptions: {
-                includePaths: ["./node_modules"],
+                includePaths: ['./node_modules'],
               },
             },
           },
@@ -56,29 +56,29 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/,
-        use: "file-loader?name=fonts/[name].[ext]!static",
+        use: 'file-loader?name=fonts/[name].[ext]!static',
       },
     ],
   },
   devServer: {
     port: 8080,
-    host: "localhost",
+    host: 'localhost',
     historyApiFallback: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
     },
     watchOptions: { aggregateTimeout: 300, poll: 1000 },
-    contentBase: "./public",
+    contentBase: './public',
     open: true,
     proxy: {
-      "/api/*": "http://127.0.0.1:5005",
+      '/api/*': 'http://127.0.0.1:5005',
     },
   },
 };
