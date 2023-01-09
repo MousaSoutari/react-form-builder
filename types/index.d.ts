@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import * as React from 'react';
+import * as React from "react";
 
 type BaseElement = {
   id: string;
@@ -88,7 +88,8 @@ export type SignatureElement = {
   readOnly: boolean;
 } & FormBuilderInput;
 export type TaskData = BaseElement &
-  (| StaticElement
+  (
+    | StaticElement
     | FormBuilderInput
     | SelectableElement
     | ImageElement
@@ -129,8 +130,7 @@ export interface FormBuilderProps {
   saveAlways?: boolean;
   editMode?: boolean;
   renderEditForm?: (props: BaseElement) => React.ReactNode;
-  rightComponent?: React.ReactNode;
-
+  // rightComponent?: React.ReactNode;
 }
 
 export class ReactFormBuilder extends React.Component<FormBuilderProps> {}

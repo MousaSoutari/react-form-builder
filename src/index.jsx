@@ -2,18 +2,17 @@
  * <ReactFormBuilder />
  */
 
-import React from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { IntlProvider } from 'react-intl';
-import Preview from './preview';
-import Toolbar from './toolbar';
-import FormGenerator from './form';
-import store from './stores/store';
-import Registry from './stores/registry';
-import AppLocale from './language-provider';
-import 'devextreme/dist/css/dx.light.css';
-import { th } from 'date-fns/locale';
+import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { IntlProvider } from "react-intl";
+import Preview from "./preview";
+import Toolbar from "./toolbar";
+import FormGenerator from "./form";
+import store from "./stores/store";
+import Registry from "./stores/registry";
+import AppLocale from "./language-provider";
+import "devextreme/dist/css/dx.light.css";
 
 class ReactFormBuilder extends React.Component {
   constructor(props) {
@@ -63,7 +62,7 @@ class ReactFormBuilder extends React.Component {
       otherItem: this.state.otherItem,
     };
 
-    const language = this.props.locale ? this.props.locale : 'en';
+    const language = this.props.locale ? this.props.locale : "en";
     const currentAppLocale = AppLocale[language];
     if (this.props.toolbarItems) {
       toolbarProps.items = this.props.toolbarItems;
@@ -102,7 +101,8 @@ class ReactFormBuilder extends React.Component {
                   registry={Registry}
                   editElement={this.state.editElement}
                   renderEditForm={this.props.renderEditForm}
-                  rightComponent={this.props.rightComponent}
+                  // rightComponent={this.props.rightComponent}
+                  bottomComponent={this.props.bottomComponent}
                   saveAlways={this.props.saveAlways}
                 />
                 <Toolbar
@@ -119,7 +119,7 @@ class ReactFormBuilder extends React.Component {
 }
 
 function ReactFormGenerator(props) {
-  const language = props.locale ? props.locale : 'en';
+  const language = props.locale ? props.locale : "en";
   const currentAppLocale = AppLocale[language];
   return (
     <IntlProvider

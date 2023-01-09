@@ -12,3 +12,22 @@
 // Form builder styles
 @import "form-builder";
 @import "form-builder-form";
+
+.CheckBoxField {
+  display: flex;
+  justify-content: space-around;
+}
+.UsersPremission {
+  font-size: 13.5;
+  padding-top: 20px;
+  color: rgba(17, 76, 113, 1);
+}
+
+.CheckButton {
+  border-bottom: solid rgba(89, 89, 89, 1);
+  box-shadow: none !important;
+  border-radius: 0%;
+  font-family: "Nunito";
+  outline: none !important;
+  box-shadow: none !important;
+}

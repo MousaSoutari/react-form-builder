@@ -5,10 +5,10 @@ const e = React.createElement;
 
 const ReactFormGenerator = ReactFormBuilder.default.ReactFormGenerator;
 const ElementStore = ReactFormBuilder.default.ElementStore;
-const formContainer = document.querySelector('#form-generator');
+const formContainer = document.querySelector("#form-generator");
 
 function setClass(element, name, remove) {
-  if (typeof element === 'string') {
+  if (typeof element === "string") {
     element = document.querySelector(element);
   }
   if (remove) {
@@ -32,15 +32,17 @@ class FormGenerator extends React.Component {
   }
 
   componentDidMount() {
-    ElementStore.subscribe(state => this._onUpdate(state.data));
-    document.querySelector('#button-preview')
-      .addEventListener('click', this.showPreview);
-    document.querySelector('#button-close')
-      .addEventListener('click', this.closePreview);
+    ElementStore.subscribe((state) => this._onUpdate(state.data));
+    document
+      .querySelector("#button-preview")
+      .addEventListener("click", this.showPreview);
+    document
+      .querySelector("#button-close")
+      .addEventListener("click", this.closePreview);
   }
 
   saveFormData() {
-    ElementStore.dispatch('post');
+    ElementStore.dispatch("post");
   }
 
   showPreview() {
@@ -48,16 +50,16 @@ class FormGenerator extends React.Component {
     this.setState({
       previewVisible: true,
     });
-    setClass('#preview-dialog', 'show', false);
-    setClass('#preview-dialog', 'd-block', false);
+    setClass("#preview-dialog", "show", false);
+    setClass("#preview-dialog", "d-block", false);
   }
 
   closePreview() {
     this.setState({
       previewVisible: false,
     });
-    setClass('#preview-dialog', 'show', true);
-    setClass('#preview-dialog', 'd-block', true);
+    setClass("#preview-dialog", "show", true);
+    setClass("#preview-dialog", "d-block", true);
   }
 
   _onChange(data) {
@@ -71,22 +73,20 @@ class FormGenerator extends React.Component {
     if (!previewVisible) {
       return null;
     }
-    const cid = window.localStorage.getItem('cid');
-    const query = cid ? `?cid=${cid}` : '';
+    const cid = window.localStorage.getItem("cid");
+    const query = cid ? `?cid=${cid}` : "";
     const postUrl = `https://safe-springs-35306.herokuapp.com/api/form${query}`;
-    return e(
-      ReactFormGenerator, {
-        download_path: '',
-        back_action: '/react-form-builder/index.html',
-        back_name: 'Back',
-        answer_data: {},
-        action_name: 'Save',
-        form_action: postUrl,
-        form_method: 'POST',
-        variables: this.props.variables,
-        data: this.state.data,
-      },
-    );
+    return e(ReactFormGenerator, {
+      download_path: "",
+      back_action: "/react-form-builder/index.html",
+      back_name: "Back",
+      answer_data: {},
+      action_name: "Save",
+      form_action: postUrl,
+      form_method: "POST",
+      variables: this.props.variables,
+      data: this.state.data,
+    });
   }
 }
 

@@ -6,10 +6,10 @@ const e = React.createElement;
 
 const ReactFormGenerator = ReactFormBuilder.ReactFormGenerator;
 const ElementStore = ReactFormBuilder.ElementStore;
-const formContainer = document.querySelector('#form-generator');
+const formContainer = document.querySelector("#form-generator");
 
 function setClass(element, name, remove) {
-  if (typeof element === 'string') {
+  if (typeof element === "string") {
     element = document.querySelector(element);
   }
   if (remove) {
@@ -33,27 +33,29 @@ class FormGenerator extends React.Component {
   }
 
   componentDidMount() {
-    ElementStore.subscribe(state => this._onUpdate(state.data));
-    document.querySelector('#button-preview')
-      .addEventListener('click', this.showPreview);
-    document.querySelector('#button-close')
-      .addEventListener('click', this.closePreview);
+    ElementStore.subscribe((state) => this._onUpdate(state.data));
+    document
+      .querySelector("#button-preview")
+      .addEventListener("click", this.showPreview);
+    document
+      .querySelector("#button-close")
+      .addEventListener("click", this.closePreview);
   }
 
   showPreview() {
     this.setState({
       previewVisible: true,
     });
-    setClass('#preview-dialog', 'show', false);
-    setClass('#preview-dialog', 'd-block', false);
+    setClass("#preview-dialog", "show", false);
+    setClass("#preview-dialog", "d-block", false);
   }
 
   closePreview() {
     this.setState({
       previewVisible: false,
     });
-    setClass('#preview-dialog', 'show', true);
-    setClass('#preview-dialog', 'd-block', true);
+    setClass("#preview-dialog", "show", true);
+    setClass("#preview-dialog", "d-block", true);
   }
 
   _onChange(data) {
@@ -67,19 +69,17 @@ class FormGenerator extends React.Component {
     if (!previewVisible) {
       return null;
     }
-    return e(
-      ReactFormGenerator, {
-        download_path: '',
-        back_action: '/',
-        back_name: 'Back',
-        answer_data: {},
-        action_name: 'Save',
-        form_action: '/',
-        form_method: 'POST',
-        variables: this.props.variables,
-        data: this.state.data,
-      },
-    );
+    return e(ReactFormGenerator, {
+      download_path: "",
+      back_action: "/",
+      back_name: "Back",
+      answer_data: {},
+      action_name: "Save",
+      form_action: "/",
+      form_method: "POST",
+      variables: this.props.variables,
+      data: this.state.data,
+    });
   }
 }
 
