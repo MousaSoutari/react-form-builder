@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import DemoBar from './demobar';
+import React from "react";
+import ReactDOM from "react-dom";
+import DemoBar from "./demobar";
+import { Button } from "devextreme-react";
+
 // eslint-disable-next-line no-unused-vars
-import FormBuilder, { Registry } from './src/index';
-import * as variables from './variables';
+import FormBuilder from "./src/index";
+
+import * as variables from "./variables";
 
 // Add our stylesheets for the demo.
-require('./scss/application.scss');
+require("./scss/application.scss");
 
-const url = '/api/formdata';
-const saveUrl = '/api/formdata';
+const url = "/api/formdata";
+const saveUrl = "/api/formdata";
 
 // const TestComponent = () => <h2>Hello</h2>;
 
@@ -74,22 +77,76 @@ const saveUrl = '/api/formdata';
 //     label: 'Label Input',
 //   },
 // ];
+const CheckButton = () => {
+  <Button
+    className="CheckButton"
+    key={"btnAcknowledgment"}
+    icon="check"
+    text={"Omar"}
+    hint="Click to Approve"
+    // onClick={() => {
+    //   setApproveBtnIcon("check");
+    //   setApproveBtnText(`${userConfiges.auth.currentUser.username}`);
+    //   setUndoApproveButtonVisibility(true);
+    // }}
+  />;
+};
+// const onCheckBoxValueChanged = () => {};
+// const checkBoxDisabled = () => {
+//   return false;
+// };
+// const checkBoxComponent = () => {
+//   return (
+//     <div className="">
+//       <CheckBox
+//         defaultValue={false}
+//         onValueChanged={onCheckBoxValueChanged}
+//         disabled={checkBoxDisabled()}
+//       />
+//       <CheckBox
+//         defaultValue={false}
+//         onValueChanged={onCheckBoxValueChanged}
+//         disabled={checkBoxDisabled()}
+//       />
+//       <CheckBox
+//         defaultValue={false}
+//         onValueChanged={onCheckBoxValueChanged}
+//         disabled={checkBoxDisabled()}
+//       />
+//       <CheckBox
+//         defaultValue={false}
+//         onValueChanged={onCheckBoxValueChanged}
+//         disabled={checkBoxDisabled()}
+//       />
+//       <CheckBox
+//         defaultValue={false}
+//         onValueChanged={onCheckBoxValueChanged}
+//         disabled={checkBoxDisabled()}
+//       />
+//       <CheckBox
+//         defaultValue={false}
+//         onValueChanged={onCheckBoxValueChanged}
+//         disabled={checkBoxDisabled()}
+//       />
+//     </div>
+//   );
+// };
 
 const App = () => (
   <FormBuilder.ReactFormBuilder
     variables={variables}
-    url={url}
-    saveUrl={saveUrl}
+    // url={url}
+    // saveUrl={saveUrl}
     locale="en"
     saveAlways={false}
-    rightComponent={<div>Mousa</div>}
+    // rightComponent={checkBoxComponent()}
     // toolbarItems={items}
   />
 );
 
-ReactDOM.render(<App />, document.getElementById('form-builder'));
+ReactDOM.render(<App />, document.getElementById("form-builder"));
 
 ReactDOM.render(
   <DemoBar variables={variables} />,
-  document.getElementById('demo-bar')
+  document.getElementById("demo-bar")
 );

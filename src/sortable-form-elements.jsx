@@ -1,9 +1,9 @@
-import SortableElement from './sortable-element';
-import PlaceHolder from './form-place-holder';
-import BaseFormElements from './form-elements';
-import { TwoColumnRow, ThreeColumnRow } from './multi-column';
-import CustomElement from './form-elements/custom-element';
-
+import SortableElement from "./sortable-element";
+import PlaceHolder from "./form-place-holder";
+import BaseFormElements from "./form-elements";
+import { TwoColumnRow, ThreeColumnRow } from "./multi-column";
+import CustomElement from "./form-elements/custom-element";
+import HeaderPlaceHolder from "./header/headerPlaceHolder";
 const {
   Header,
   Paragraph,
@@ -54,6 +54,7 @@ FormElements.Camera = SortableElement(Camera);
 FormElements.FileUpload = SortableElement(FileUpload);
 FormElements.Range = SortableElement(Range);
 FormElements.PlaceHolder = SortableElement(PlaceHolder);
+FormElements.HeaderPlaceHolder = SortableElement(HeaderPlaceHolder);
 FormElements.TwoColumnRow = SortableElement(TwoColumnRow);
 FormElements.ThreeColumnRow = SortableElement(ThreeColumnRow);
 FormElements.CustomElement = SortableElement(CustomElement);
