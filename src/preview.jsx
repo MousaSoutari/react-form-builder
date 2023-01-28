@@ -2,16 +2,17 @@
  * <Preview />
  */
 
-import React from "react";
-import update from "immutability-helper";
-import store from "./stores/store";
-import FormElementsEdit from "./form-dynamic-edit";
-import SortableFormElements from "./sortable-form-elements";
-import CustomDragLayer from "./form-elements/component-drag-layer";
-import { Button } from "devextreme-react";
-import { SignPermission } from "./SignPermission/SignPermission";
-import Header from "./header/header";
-import HeaderPlaceHolder from "./header/headerPlaceHolder";
+import React from 'react';
+import update from 'immutability-helper';
+import store from './stores/store';
+import FormElementsEdit from './form-dynamic-edit';
+import FormElementsPermissionEditor from './form-dynamic-permission';
+
+import SortableFormElements from './sortable-form-elements';
+import CustomDragLayer from './form-elements/component-drag-layer';
+import { Button } from 'devextreme-react';
+import Header from './header/header';
+import HeaderPlaceHolder from './header/headerPlaceHolder';
 const { PlaceHolder } = SortableFormElements;
 
 export default class Preview extends React.Component {
@@ -27,6 +28,8 @@ export default class Preview extends React.Component {
     store.setExternalHandler(onLoad, onPost);
 
     this.editForm = React.createRef();
+    this.editPermissionForm = React.createRef();
+
     this.state = {
       data: props.data || [],
       answer_data: {},
@@ -47,17 +50,17 @@ export default class Preview extends React.Component {
   componentDidMount() {
     const { data, url, saveUrl, saveAlways } = this.props;
     store.subscribe((state) => this._onUpdate(state.data));
-    store.dispatch("load", {
+    store.dispatch('load', {
       loadUrl: url,
       saveUrl,
       data: data || [],
       saveAlways,
     });
-    document.addEventListener("mousedown", this.editModeOff);
+    document.addEventListener('mousedown', this.editModeOff);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.editModeOff);
+    document.removeEventListener('mousedown', this.editModeOff);
   }
 
   editModeOff = (e) => {
@@ -75,8 +78,17 @@ export default class Preview extends React.Component {
     this.props.manualEditModeOff();
   };
 
+  manualEditPermissionModeOff = () => {
+    const { editElement } = this.props;
+    if (editElement && editElement.dirty) {
+      editElement.dirty = false;
+      this.updateElement(editElement);
+    }
+    this.props.manualEditPermissionModeOff();
+  };
+
   _setValue(text) {
-    return text.replace(/[^A-Z0-9]+/gi, "_").toLowerCase();
+    return text.replace(/[^A-Z0-9]+/gi, '_').toLowerCase();
   }
 
   updateElement(element) {
@@ -93,7 +105,7 @@ export default class Preview extends React.Component {
 
     if (found) {
       this.seq = this.seq > 100000 ? 0 : this.seq + 1;
-      store.dispatch("updateOrder", data);
+      store.dispatch('updateOrder', data);
     }
   }
 
@@ -117,11 +129,11 @@ export default class Preview extends React.Component {
       item.childItems.forEach((x) => {
         const child = this.getDataById(x);
         if (child) {
-          store.dispatch("delete", child);
+          store.dispatch('delete', child);
         }
       });
     }
-    store.dispatch("delete", item);
+    store.dispatch('delete', item);
   }
 
   _onInsertAbove(item) {
@@ -133,11 +145,11 @@ export default class Preview extends React.Component {
       item.childItems.forEach((x) => {
         const child = this.getDataById(x);
         if (child) {
-          store.dispatch("copy", child);
+          store.dispatch('copy', child);
         }
       });
     }
-    store.dispatch("copy", item);
+    store.dispatch('copy', item);
   }
 
   getDataById(id) {
@@ -164,7 +176,7 @@ export default class Preview extends React.Component {
     // eslint-disable-next-line no-param-reassign
     item.childItems[col] = child.id;
     child.col = col;
-    store.dispatch("updateOrder", data);
+    store.dispatch('updateOrder', data);
     return true;
   }
 
@@ -198,7 +210,7 @@ export default class Preview extends React.Component {
     if (!this.getDataById(child.id)) {
       newData.push(child);
     }
-    store.dispatch("updateOrder", newData);
+    store.dispatch('updateOrder', newData);
   }
 
   removeChild(item, col) {
@@ -211,7 +223,7 @@ export default class Preview extends React.Component {
       item.childItems[col] = null;
       // delete oldItem.parentId;
       this.seq = this.seq > 100000 ? 0 : this.seq + 1;
-      store.dispatch("updateOrder", newData);
+      store.dispatch('updateOrder', newData);
       this.setState({ data: newData });
     }
   }
@@ -233,7 +245,7 @@ export default class Preview extends React.Component {
       // eslint-disable-next-line no-param-reassign
       item.index = newIndex;
       this.seq = this.seq > 100000 ? 0 : this.seq + 1;
-      store.dispatch("updateOrder", newData);
+      store.dispatch('updateOrder', newData);
       this.setState({ data: newData });
     }
   }
@@ -245,7 +257,7 @@ export default class Preview extends React.Component {
     } else {
       data.splice(hoverIndex, 0, item);
       this.saveData(item, hoverIndex, hoverIndex);
-      store.dispatch("insertItem", item);
+      store.dispatch('insertItem', item);
     }
   }
 
@@ -270,12 +282,12 @@ export default class Preview extends React.Component {
       },
     });
     this.setState(newData);
-    store.dispatch("updateOrder", newData.data);
+    store.dispatch('updateOrder', newData.data);
   }
 
   getElement(item, index) {
     if (item.custom) {
-      if (!item.component || typeof item.component !== "function") {
+      if (!item.component || typeof item.component !== 'function') {
         // eslint-disable-next-line no-param-reassign
         item.component = this.props.registry.get(item.key);
       }
@@ -299,6 +311,7 @@ export default class Preview extends React.Component {
         mutable={false}
         parent={this.props.parent}
         editModeOn={this.props.editModeOn}
+        editPermissionModeOn={this.props.editPermissionModeOn}
         isDraggable={true}
         key={item.id}
         sortData={item.id}
@@ -306,6 +319,7 @@ export default class Preview extends React.Component {
         getDataById={this.getDataById}
         setAsChild={this.setAsChild}
         removeChild={this.removeChild}
+        user={this.props.user}
         // preview={this}
         // element={this.props.editElement}
         updateElement={handleUpdateElement}
@@ -333,24 +347,63 @@ export default class Preview extends React.Component {
     return this.props.renderEditForm(formElementEditProps);
   }
 
+  showPermissionForm() {
+    const handleUpdateElement = (element) => this.updateElement(element);
+    handleUpdateElement.bind(this);
+
+    const formElementPermissionProps = {
+      showCorrectColumn: this.props.showCorrectColumn,
+      files: this.props.files,
+      manualEditPermissionModeOff: this.manualEditPermissionModeOff,
+      preview: this,
+      element: this.props.editElement,
+      updateElement: handleUpdateElement,
+    };
+
+    return this.props.renderPermissionForm(formElementPermissionProps);
+  }
+
   render() {
     let classes = this.props.className;
+
     if (this.props.editMode) {
-      classes += " is-editing";
+      classes.replace(' is-permission-editing', '');
+      classes += ' is-editing';
+    }
+    if (this.props.editPermissionMode) {
+      classes.replace(' is-editing', '');
+      classes += ' is-permission-editing';
     }
     const data = this.state.data.filter((x) => !!x && !x.parentId);
     const items = data.map((item, index) => this.getElement(item, index));
     return (
       <div className={classes}>
-        <div className="edit-form" ref={this.editForm}>
-          {/*  Here  */}
-          <HeaderPlaceHolder
-            id="header-Form-place-holder"
-            show={true}
-            text={<Header />}
-          />
-          {this.props.editElement !== null && this.showEditForm()}
-        </div>
+        {this.props.editMode && (
+          <div className="edit-form" style={{ height: 0 }} ref={this.editForm}>
+            {/*  Here  */}
+            <HeaderPlaceHolder
+              id="header-Form-place-holder"
+              show={true}
+              text={<Header />}
+            />
+            {this.props.editElement !== null && this.showEditForm()}
+          </div>
+        )}
+        {this.props.editPermissionMode && (
+          <div
+            className="edit-permission-form"
+            style={{ height: 0 }}
+            ref={this.editPermissionForm}
+          >
+            {/*  Here  */}
+            <HeaderPlaceHolder
+              id="header-Form-place-holder"
+              show={true}
+              text={<Header />}
+            />
+            {this.props.editElement !== null && this.showPermissionForm()}
+          </div>
+        )}
         <div className="Sortable">{items}</div>
         <PlaceHolder
           id="form-place-holder"
@@ -375,8 +428,11 @@ Preview.defaultProps = {
   showCorrectColumn: false,
   files: [],
   editMode: false,
+  editPermissionMode: false,
   editElement: null,
-  className: "col-md-12 react-form-builder-preview float-left",
+  className: 'col-md-12 react-form-builder-preview float-left',
   renderEditForm: (props) => <FormElementsEdit {...props} />,
+  renderPermissionForm: (props) => <FormElementsPermissionEditor {...props} />,
+
   // rightComponent: (props) => <div {...props} />,
 };

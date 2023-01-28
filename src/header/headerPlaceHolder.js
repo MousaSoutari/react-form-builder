@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 
-const PLACE_HOLDER = "header-Form-place-holder";
-const PLACE_HOLDER_HIDDEN = "form-place-holder-hidden";
+const PLACE_HOLDER = 'header-Form-place-holder';
+const PLACE_HOLDER_HIDDEN = 'form-place-holder-hidden';
 
 class HeaderPlaceHolder extends React.Component {
   render() {
@@ -13,10 +13,10 @@ class HeaderPlaceHolder extends React.Component {
       : PLACE_HOLDER_HIDDEN;
     // eslint-disable-next-line no-nested-ternary
     const headerPlaceHolder = this.props.show
-      ? this.props.text === "Dropzone"
-        ? intl.formatMessage({ id: "drop-zone" })
+      ? this.props.text === 'Dropzone'
+        ? intl.formatMessage({ id: 'drop-zone' })
         : this.props.text
-      : "";
+      : '';
 
     return (
       <div className={placeHolderClass}>
@@ -33,6 +33,6 @@ HeaderPlaceHolder.propTypes = {
 };
 
 HeaderPlaceHolder.defaultProps = {
-  text: "Dropzone",
+  text: 'Dropzone',
   show: false,
 };

@@ -1,6 +1,6 @@
-import React from "react";
-import store from "./src/stores/store";
-import { ReactFormGenerator } from "./src/index";
+import React from 'react';
+import store from './src/stores/store';
+import { ReactFormGenerator } from './src/index';
 
 const answers = {};
 // const answers = {
@@ -68,57 +68,57 @@ export default class Demobar extends React.Component {
 
   // eslint-disable-next-line no-unused-vars
   _onSubmit(data) {
-    // console.log('onSubmit', data);
+    console.log('onSubmit', data);
     // Place code to post json data to server here
   }
 
   saveFormData() {
-    store.dispatch("post");
+    store.dispatch('post');
   }
 
   render() {
-    let modalClass = "modal";
+    let modalClass = 'modal';
     if (this.state.previewVisible) {
-      modalClass += " show d-block";
+      modalClass += ' show d-block';
     }
 
-    let shortModalClass = "modal short-modal";
+    let shortModalClass = 'modal short-modal';
     if (this.state.shortPreviewVisible) {
-      shortModalClass += " show d-block";
+      shortModalClass += ' show d-block';
     }
 
-    let roModalClass = "modal ro-modal";
+    let roModalClass = 'modal ro-modal';
     if (this.state.roPreviewVisible) {
-      roModalClass += " show d-block";
+      roModalClass += ' show d-block';
     }
 
     return (
-      <div className="clearfix" style={{ margin: "10px", width: "70%" }}>
+      <div className="clearfix" style={{ margin: '10px', width: '70%' }}>
         <h4 className="float-left">Preview</h4>
         <button
           className="btn btn-primary float-right"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: '10px' }}
           onClick={() => this.showPreview()}
         >
           Preview Form
         </button>
         <button
           className="btn btn-default float-right"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: '10px' }}
           onClick={() => this.showShortPreview()}
         >
           Alternate/Short Form
         </button>
         <button
           className="btn btn-default float-right"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: '10px' }}
           onClick={() => this.showRoPreview()}
         >
           Read Only Form
         </button>
         <button
           className="btn btn-default float-right"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: '10px' }}
           onClick={() => this.saveFormData()}
         >
           Save Form
@@ -136,8 +136,9 @@ export default class Demobar extends React.Component {
                   action_name="Save"
                   form_action="/api/form"
                   form_method="POST"
+                  user={this.props.user}
                   // skip_validations={true}
-                  // onSubmit={this._onSubmit}
+                  onSubmit={this._onSubmit}
                   variables={this.props.variables}
                   data={this.state.data}
                   locale="en"
@@ -170,6 +171,7 @@ export default class Demobar extends React.Component {
                   action_name="Save"
                   form_action="/"
                   form_method="POST"
+                  user={this.props.user}
                   read_only={true}
                   variables={this.props.variables}
                   hide_actions={true}

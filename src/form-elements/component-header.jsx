@@ -13,6 +13,7 @@ const ComponentHeader = (props) => {
       <HeaderBar
         parent={props.parent}
         editModeOn={props.editModeOn}
+        editPermissionModeOn={props.editPermissionModeOn}
         data={props.data}
         index={props.index}
         setAsChild={props.setAsChild}

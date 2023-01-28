@@ -2,17 +2,17 @@
  * <ReactFormBuilder />
  */
 
-import React from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { IntlProvider } from "react-intl";
-import Preview from "./preview";
-import Toolbar from "./toolbar";
-import FormGenerator from "./form";
-import store from "./stores/store";
-import Registry from "./stores/registry";
-import AppLocale from "./language-provider";
-import "devextreme/dist/css/dx.light.css";
+import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { IntlProvider } from 'react-intl';
+import Preview from './preview';
+import Toolbar from './toolbar';
+import FormGenerator from './form';
+import store from './stores/store';
+import Registry from './stores/registry';
+import AppLocale from './language-provider';
+import 'devextreme/dist/css/dx.light.css';
 
 class ReactFormBuilder extends React.Component {
   constructor(props) {
@@ -20,11 +20,13 @@ class ReactFormBuilder extends React.Component {
 
     this.state = {
       editMode: false,
+      editPermissionMode: false,
       editElement: null,
       showToolbar: false,
       otherItem: null,
     };
     this.editModeOn = this.editModeOn.bind(this);
+    this.editPermissionModeOn = this.editPermissionModeOn.bind(this);
     this.toggleToolbar = this.toggleToolbar.bind(this);
   }
 
@@ -34,7 +36,28 @@ class ReactFormBuilder extends React.Component {
     if (this.state.editMode) {
       this.setState({ editMode: !this.state.editMode, editElement: null });
     } else {
-      this.setState({ editMode: !this.state.editMode, editElement: data });
+      this.setState({
+        editMode: !this.state.editMode,
+        editElement: data,
+        editPermissionMode: false,
+      });
+    }
+  }
+
+  editPermissionModeOn(data, e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.state.editPermissionMode) {
+      this.setState({
+        editPermissionMode: !this.state.editPermissionMode,
+        editElement: null,
+      });
+    } else {
+      this.setState({
+        editPermissionMode: !this.state.editPermissionMode,
+        editElement: data,
+        editMode: false,
+      });
     }
   }
 
@@ -42,6 +65,15 @@ class ReactFormBuilder extends React.Component {
     if (this.state.editMode) {
       this.setState({
         editMode: false,
+        editElement: null,
+      });
+    }
+  }
+
+  manualEditPermissionModeOff() {
+    if (this.state.editPermissionMode) {
+      this.setState({
+        editPermissionMode: false,
         editElement: null,
       });
     }
@@ -62,7 +94,7 @@ class ReactFormBuilder extends React.Component {
       otherItem: this.state.otherItem,
     };
 
-    const language = this.props.locale ? this.props.locale : "en";
+    const language = this.props.locale ? this.props.locale : 'en';
     const currentAppLocale = AppLocale[language];
     if (this.props.toolbarItems) {
       toolbarProps.items = this.props.toolbarItems;
@@ -87,6 +119,9 @@ class ReactFormBuilder extends React.Component {
                 <Preview
                   files={this.props.files}
                   manualEditModeOff={this.manualEditModeOff.bind(this)}
+                  manualEditPermissionModeOff={this.manualEditPermissionModeOff.bind(
+                    this
+                  )}
                   showCorrectColumn={this.props.showCorrectColumn}
                   parent={this}
                   data={this.props.data}
@@ -96,11 +131,15 @@ class ReactFormBuilder extends React.Component {
                   onPost={this.props.onPost}
                   editModeOn={this.editModeOn}
                   editMode={this.state.editMode}
+                  editPermissionModeOn={this.editPermissionModeOn}
+                  editPermissionMode={this.state.editPermissionMode}
                   variables={this.props.variables}
+                  user={this.props.user}
                   toggleToolbar={this.toggleToolbar}
                   registry={Registry}
                   editElement={this.state.editElement}
                   renderEditForm={this.props.renderEditForm}
+                  renderPermissionForm={this.props.renderPermissionForm}
                   // rightComponent={this.props.rightComponent}
                   bottomComponent={this.props.bottomComponent}
                   saveAlways={this.props.saveAlways}
@@ -119,7 +158,7 @@ class ReactFormBuilder extends React.Component {
 }
 
 function ReactFormGenerator(props) {
-  const language = props.locale ? props.locale : "en";
+  const language = props.locale ? props.locale : 'en';
   const currentAppLocale = AppLocale[language];
   return (
     <IntlProvider

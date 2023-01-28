@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from 'react';
 import DataGrid, {
   Column,
   FilterRow,
@@ -14,16 +14,16 @@ import DataGrid, {
   Popup,
   Lookup,
   RemoteOperations,
-} from "devextreme-react/data-grid";
-import http from "../axiosClient";
-import TagBox from "devextreme-react/tag-box";
-import { Item } from "devextreme-react/form";
-import CustomStore from "devextreme/data/custom_store";
-import { successMsg, errorMsg } from "../successAndErrorMsg/successAndErrorMsg";
-import getQueryParams from "../tableUtilities";
+} from 'devextreme-react/data-grid';
+import http from '../axiosClient';
+import TagBox from 'devextreme-react/tag-box';
+import { Item } from 'devextreme-react/form';
+import CustomStore from 'devextreme/data/custom_store';
+import { successMsg, errorMsg } from '../successAndErrorMsg/successAndErrorMsg';
+import getQueryParams from '../tableUtilities';
 const SignPermission = () => {
   const allowedPageSizes = [5, 10, 100];
-  const exportFormats = ["excel", "pdf"];
+  const exportFormats = ['excel', 'pdf'];
   const [roleNameData, setRoleNameData] = useState(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState(null);
   const [loadingRole, setLoadingRole] = useState(false);
@@ -38,7 +38,7 @@ const SignPermission = () => {
 
   const gridDataSource = {
     store: new CustomStore({
-      key: "id",
+      key: 'id',
       load: (loadOptions) => {
         const pageSize = loadOptions.take ?? 10;
         let pageIndex = 1;
@@ -53,14 +53,14 @@ const SignPermission = () => {
                 ignoreDeleted: true,
               }
             )}`,
-            method: "get",
+            method: 'get',
           })
           .then(handleErrors)
           .then((response) => {
             return response;
           })
           .then((result) => {
-            console.log(result);
+            // console.log(result);
             setSignData();
             return {
               data: result.data.data,
@@ -78,8 +78,8 @@ const SignPermission = () => {
         }
         return http()
           .request({
-            url: "/sign-permissions",
-            method: "post",
+            url: '/sign-permissions',
+            method: 'post',
             data: { data: values.attributes },
           })
           .then(handleErrors)
@@ -95,7 +95,7 @@ const SignPermission = () => {
         return http()
           .request({
             url: `/sign-permissions/${key}`,
-            method: "put",
+            method: 'put',
             data: {
               data: {
                 deleted: true,
@@ -121,7 +121,7 @@ const SignPermission = () => {
         return http()
           .request({
             url: `/sign-permissions/${key}`,
-            method: "put",
+            method: 'put',
             data: { data: values.attributes },
           })
           .then(handleErrors)
@@ -138,23 +138,23 @@ const SignPermission = () => {
 
   const nameValidation = (data) => {
     return new Promise((resolve, reject) => {
-      const columnName = data.column.dataField.replace("attributes.", "");
+      const columnName = data.column.dataField.replace('attributes.', '');
       return http()
         .request({
           url: `/sign-permissions?filters[${columnName}][$eq]=${data.value}`,
-          method: "get",
+          method: 'get',
         })
         .then((response) => {
           if (response.data.meta.pagination.total > 0)
             if (response.data.data[0].attributes.name === data.value)
               if (response.data.data[0].id !== data.data.id)
-                reject("Name should be unique");
+                reject('Name should be unique');
         })
         .catch((err) => {
-          reject("Name should be unique");
+          reject('Name should be unique');
         })
         .finally(() => {
-          resolve("SUCCESS");
+          resolve('SUCCESS');
         });
     });
   };
@@ -164,8 +164,8 @@ const SignPermission = () => {
         setLoadingRole(true);
         http()
           .request({
-            url: "/users-permissions/roles",
-            method: "get",
+            url: '/users-permissions/roles',
+            method: 'get',
           })
           .then((response) => {
             setRoleData(response.data.roles);
@@ -200,14 +200,14 @@ const SignPermission = () => {
     if (item.data.attributes.users_permissions_roles.data) {
       return item.data.attributes.users_permissions_roles.data
         .map((m) => m.attributes.name)
-        .join(" ,");
+        .join(' ,');
     }
   };
   return (
     <React.Fragment>
-      <h2 className={"content-block"}>Sign permissions</h2>
+      <h2 className={'content-block'}>Sign permissions</h2>
 
-      <div className={"content-block dx-card responsive-paddings"}>
+      <div className={'content-block dx-card responsive-paddings'}>
         <DataGrid
           id="gridContainer"
           dataSource={gridDataSource}

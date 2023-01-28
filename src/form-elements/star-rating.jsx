@@ -291,9 +291,9 @@ export default class StarRating extends React.Component {
             min={this.min}
             max={this.max}
             readOnly
-            style={{
-              width: 65,
-            }}
+            // style={{
+            //   width: 65,
+            // }}
           />
         </span>
       </span>

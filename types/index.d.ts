@@ -129,7 +129,10 @@ export interface FormBuilderProps {
   saveUrl?: string;
   saveAlways?: boolean;
   editMode?: boolean;
+  editPermissionMode?: boolean;
   renderEditForm?: (props: BaseElement) => React.ReactNode;
+  renderPermissionForm?: (props: BaseElement) => React.ReactNode;
+
   // rightComponent?: React.ReactNode;
 }
 
@@ -156,6 +159,8 @@ export interface FormGeneratorProps {
   skip_validations?: boolean;
   display_short?: boolean;
   read_only?: boolean;
+  user?: any;
+
   // eslint-disable-next-line no-undef
   variables?: Record<any, any>;
 }

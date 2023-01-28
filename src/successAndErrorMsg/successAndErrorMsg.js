@@ -1,4 +1,4 @@
-import notify from "devextreme/ui/notify";
+import notify from 'devextreme/ui/notify';
 
 const successMsg = () => {
   const message = `Success`;
@@ -6,11 +6,11 @@ const successMsg = () => {
     {
       message,
       position: {
-        my: "center top",
-        at: "center top",
+        my: 'center top',
+        at: 'center top',
       },
     },
-    "success",
+    'success',
     3000
   );
 };
@@ -21,11 +21,11 @@ const errorMsg = () => {
     {
       message,
       position: {
-        my: "center top",
-        at: "center top",
+        my: 'center top',
+        at: 'center top',
       },
     },
-    "error",
+    'error',
     3000
   );
 };

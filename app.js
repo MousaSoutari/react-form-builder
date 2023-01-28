@@ -1,18 +1,40 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import DemoBar from "./demobar";
-import { Button } from "devextreme-react";
+/* eslint-disable no-unused-expressions */
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import { Button } from 'devextreme-react';
+import DemoBar from './demobar';
 
 // eslint-disable-next-line no-unused-vars
-import FormBuilder from "./src/index";
+import FormBuilder from './src/index';
 
-import * as variables from "./variables";
+import * as variables from './variables';
 
 // Add our stylesheets for the demo.
-require("./scss/application.scss");
+require('./scss/application.scss');
 
-const url = "/api/formdata";
-const saveUrl = "/api/formdata";
+const user = {
+  id: 1,
+  username: 'Mousa',
+  email: 'mousa.soutari@gmail.com',
+  provider: 'local',
+  confirmed: true,
+  blocked: false,
+  factoryID: null,
+  createdAt: '2022-08-04T21:14:21.849Z',
+  updatedAt: '2022-09-13T15:45:43.908Z',
+  deleted: false,
+
+  role: {
+    id: 4,
+    name: 'Super Admin',
+    description: 'Super Admin - Qarar User',
+    type: 'super_admin',
+    createdAt: '2022-09-13T15:34:34.440Z',
+    updatedAt: '2023-01-09T08:52:48.021Z',
+  },
+};
+// const url = '/api/formdata';
+// const saveUrl = '/api/formdata';
 
 // const TestComponent = () => <h2>Hello</h2>;
 
@@ -76,21 +98,21 @@ const saveUrl = "/api/formdata";
 //     props: { test: 'test_input' },
 //     label: 'Label Input',
 //   },
-// ];
-const CheckButton = () => {
-  <Button
-    className="CheckButton"
-    key={"btnAcknowledgment"}
-    icon="check"
-    text={"Omar"}
-    hint="Click to Approve"
-    // onClick={() => {
-    //   setApproveBtnIcon("check");
-    //   setApproveBtnText(`${userConfiges.auth.currentUser.username}`);
-    //   setUndoApproveButtonVisibility(true);
-    // }}
-  />;
-};
+// // ];
+// const CheckButton = () => {
+//   <Button
+//     className="CheckButton"
+//     key={'btnAcknowledgment'}
+//     icon="check"
+//     text={'Omar'}
+//     hint="Click to Approve"
+//     // onClick={() => {
+//     //   setApproveBtnIcon("check");
+//     //   setApproveBtnText(`${userConfiges.auth.currentUser.username}`);
+//     //   setUndoApproveButtonVisibility(true);
+//     // }}
+//   />;
+// };
 // const onCheckBoxValueChanged = () => {};
 // const checkBoxDisabled = () => {
 //   return false;
@@ -135,6 +157,7 @@ const CheckButton = () => {
 const App = () => (
   <FormBuilder.ReactFormBuilder
     variables={variables}
+    user={user}
     // url={url}
     // saveUrl={saveUrl}
     locale="en"
@@ -144,9 +167,9 @@ const App = () => (
   />
 );
 
-ReactDOM.render(<App />, document.getElementById("form-builder"));
+ReactDOM.render(<App />, document.getElementById('form-builder'));
 
 ReactDOM.render(
   <DemoBar variables={variables} />,
-  document.getElementById("demo-bar")
+  document.getElementById('demo-bar')
 );

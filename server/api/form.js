@@ -10,10 +10,7 @@ var formData = require('./formData');
 var extensions = ['.png', '.gif', '.jpg', '.jpeg'];
 var handleError = (err, res) => {
   console.log(err);
-  res
-    .status(500)
-    .contentType('text/plain')
-    .end('Oops! Something went wrong!');
+  res.status(500).contentType('text/plain').end('Oops! Something went wrong!');
 };
 var tempPath = path.join(__dirname, '../../public/temp');
 var upload = multer({ dest: tempPath }).any();
@@ -41,14 +38,14 @@ var handleUpload = (req, res) => {
       const extn = path.extname(file.originalname).toLowerCase();
       if (extensions.indexOf(extn) > -1) {
         const targetFilePath = path.join(targetPath, `${fieldname}${extn}`);
-        fs.rename(tempFilePath, targetFilePath, err => {
+        fs.rename(tempFilePath, targetFilePath, (err) => {
           if (err) return handleError(err, res);
           formData.answers[fieldname] = `/uploads/${fieldname}${extn}`;
           res.redirect('/api/form');
         });
       } else {
         console.log('File type is not allowed!');
-        fs.unlink(tempPath, err => {
+        fs.unlink(tempPath, (err) => {
           if (err) return handleError(err, res);
           res
             .status(403)

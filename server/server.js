@@ -21,12 +21,14 @@ app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 // app.engine('ejs', require('ejs').renderFile);
 
-app.set('port', (process.env.PORT || isProduction ? 8080 : 5005));
+app.set('port', process.env.PORT || isProduction ? 8080 : 5005);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 if (isProduction) {
   app.use(express.static(`${__dirname}/../dist`));
@@ -35,7 +37,7 @@ if (isProduction) {
 app.use('/api/', api);
 
 function fixLabelLink(data) {
-  const task_data = data.task_data.map(x => ({ ...x }));
+  const task_data = data.task_data.map((x) => ({ ...x }));
   for (let i = 0; i < task_data.length; i++) {
     if (data.task_data[i].label) {
       task_data[i].label = task_data[i].label.replace(/"/g, '\\"');
@@ -47,7 +49,8 @@ function fixLabelLink(data) {
   return { task_data };
 }
 
-app.route('/api/form/')
+app
+  .route('/api/form/')
   .get((req, res) => {
     const data = fixLabelLink(formData.data);
     // console.log('get form: ', data);
@@ -76,7 +79,7 @@ app.use(function (err, req, res, next) {
 app.listen(app.get('port'), function () {
   console.log(
     `Express started on http://localhost:${app.get(
-      'port',
-    )}; press Ctrl-C to terminate.`,
+      'port'
+    )}; press Ctrl-C to terminate.`
   );
 });

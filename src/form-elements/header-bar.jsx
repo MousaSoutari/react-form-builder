@@ -43,6 +43,17 @@ export default class HeaderBar extends React.Component {
               <i className="is-isolated fas fa-edit"></i>
             </div>
           )}
+          {this.props.data.element !== 'LineBreak' && (
+            <div
+              className="btn is-isolated"
+              onClick={this.props.editPermissionModeOn.bind(
+                this.props.parent,
+                this.props.data
+              )}
+            >
+              <i className="is-isolated fas fa-signature"></i>
+            </div>
+          )}
           {/* {!this.props.data.isContainer &&
             <DragHandle data={this.props.data} index={this.props.index} onDestroy={this.props.onDestroy} setAsChild={this.props.setAsChild} />
           } */}

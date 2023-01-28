@@ -14,6 +14,6 @@ Coded by www.qararplus.com
 */
 
 const CONFIG = {
-  STRAPI_URL: "http://54.188.136.26:9902/api",
+  STRAPI_URL: 'http://54.188.136.26:9902/api',
 };
 export default CONFIG;

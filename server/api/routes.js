@@ -12,7 +12,8 @@ var optionsData = [
 
 var app = express();
 
-app.route('/formdata/')
+app
+  .route('/formdata/')
   .get((req, res) => {
     // console.log('get formdata: ', formData.data);
     res.send(formData.data.task_data);
@@ -22,9 +23,8 @@ app.route('/formdata/')
     // console.log('post formdata: ', formData.data);
     res.status(200).send();
   });
-app.route('/optionsdata/')
-  .get((req, res) => {
-    res.send(optionsData);
-  });
+app.route('/optionsdata/').get((req, res) => {
+  res.send(optionsData);
+});
 
 module.exports = app;

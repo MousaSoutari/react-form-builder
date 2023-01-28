@@ -3,7 +3,8 @@ import { ReactFormBuilder, ElementStore } from 'react-form-builder2';
 
 import { get, post } from './requests';
 
-const getUrl = (cid) => `https://safe-springs-35306.herokuapp.com/api/formdata?cid=${cid}`;
+const getUrl = (cid) =>
+  `https://safe-springs-35306.herokuapp.com/api/formdata?cid=${cid}`;
 
 // const content = [
 //   {
@@ -59,12 +60,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <label>
-          Select your form:          
-        </label>
-        <select className="form-control" 
-            value={this.state.formId} 
-            onChange={this.handleChange} >
+        <label>Select your form:</label>
+        <select
+          className="form-control"
+          value={this.state.formId}
+          onChange={this.handleChange}
+        >
           <option value="1">Form 1</option>
           <option value="2">Form 2</option>
         </select>
@@ -73,11 +74,11 @@ class App extends React.Component {
           // data={content}
           onLoad={this.onLoad}
           onPost={this.onPost}
-        />,
+        />
+        ,
       </div>
     );
   }
 }
 
 export default App;
-

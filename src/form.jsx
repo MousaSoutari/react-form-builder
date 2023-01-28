@@ -2,15 +2,15 @@
  * <Form />
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { EventEmitter } from "fbemitter";
-import { injectIntl } from "react-intl";
-import FormValidator from "./form-validator";
-import FormElements from "./form-elements";
-import { TwoColumnRow, ThreeColumnRow } from "./multi-column";
-import CustomElement from "./form-elements/custom-element";
-import Registry from "./stores/registry";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { EventEmitter } from 'fbemitter';
+import { injectIntl } from 'react-intl';
+import FormValidator from './form-validator';
+import FormElements from './form-elements';
+import { TwoColumnRow, ThreeColumnRow } from './multi-column';
+import CustomElement from './form-elements/custom-element';
+import Registry from './stores/registry';
 
 const { Image, Checkboxes, Signature, Download, Camera, FileUpload } =
   FormElements;
@@ -33,7 +33,7 @@ class ReactForm extends React.Component {
     if (Array.isArray(answers)) {
       const result = {};
       answers.forEach((x) => {
-        if (x.name.indexOf("tags_") > -1) {
+        if (x.name.indexOf('tags_') > -1) {
           result[x.name] = x.value.map((y) => y.value);
         } else {
           result[x.name] = x.value;
@@ -66,21 +66,21 @@ class ReactForm extends React.Component {
   _getItemValue(item, ref) {
     let $item = {
       element: item.element,
-      value: "",
+      value: '',
     };
-    if (item.element === "Rating") {
+    if (item.element === 'Rating') {
       $item.value = ref.inputField.current.state.rating;
-    } else if (item.element === "Tags") {
+    } else if (item.element === 'Tags') {
       $item.value = ref.inputField.current.state.value;
-    } else if (item.element === "DatePicker") {
+    } else if (item.element === 'DatePicker') {
       $item.value = ref.state.value;
-    } else if (item.element === "Camera") {
+    } else if (item.element === 'Camera') {
       $item.value = ref.state.img;
-    } else if (item.element === "FileUpload") {
+    } else if (item.element === 'FileUpload') {
       $item.value = ref.state.fileUpload;
     } else if (ref && ref.inputField && ref.inputField.current) {
       $item = ReactDOM.findDOMNode(ref.inputField.current);
-      if ($item && typeof $item.value === "string") {
+      if ($item && typeof $item.value === 'string') {
         $item.value = $item.value.trim();
       }
     }
@@ -91,21 +91,21 @@ class ReactForm extends React.Component {
     let incorrect = false;
     if (item.canHaveAnswer) {
       const ref = this.inputs[item.field_name];
-      if (item.element === "Checkboxes" || item.element === "RadioButtons") {
+      if (item.element === 'Checkboxes' || item.element === 'RadioButtons') {
         item.options.forEach((option) => {
           const $option = ReactDOM.findDOMNode(
             ref.options[`child_ref_${option.key}`]
           );
           if (
-            (option.hasOwnProperty("correct") && !$option.checked) ||
-            (!option.hasOwnProperty("correct") && $option.checked)
+            (option.hasOwnProperty('correct') && !$option.checked) ||
+            (!option.hasOwnProperty('correct') && $option.checked)
           ) {
             incorrect = true;
           }
         });
       } else {
         const $item = this._getItemValue(item, ref);
-        if (item.element === "Rating") {
+        if (item.element === 'Rating') {
           if ($item.value.toString() !== item.correct) {
             incorrect = true;
           }
@@ -123,7 +123,7 @@ class ReactForm extends React.Component {
     let invalid = false;
     if (item.required === true) {
       const ref = this.inputs[item.field_name];
-      if (item.element === "Checkboxes" || item.element === "RadioButtons") {
+      if (item.element === 'Checkboxes' || item.element === 'RadioButtons') {
         let checked_options = 0;
         item.options.forEach((option) => {
           const $option = ReactDOM.findDOMNode(
@@ -139,7 +139,7 @@ class ReactForm extends React.Component {
         }
       } else {
         const $item = this._getItemValue(item, ref);
-        if (item.element === "Rating") {
+        if (item.element === 'Rating') {
           if ($item.value === 0) {
             invalid = true;
           }
@@ -158,7 +158,7 @@ class ReactForm extends React.Component {
     };
     if (!itemData.name) return null;
     const ref = this.inputs[item.field_name];
-    if (item.element === "Checkboxes" || item.element === "RadioButtons") {
+    if (item.element === 'Checkboxes' || item.element === 'RadioButtons') {
       const checked_options = [];
       item.options.forEach((option) => {
         const $option = ReactDOM.findDOMNode(
@@ -193,11 +193,11 @@ class ReactForm extends React.Component {
     if ($canvas_sig) {
       const base64 = $canvas_sig
         .toDataURL()
-        .replace("data:image/png;base64,", "");
+        .replace('data:image/png;base64,', '');
       const isEmpty = $canvas_sig.isEmpty();
       const $input_sig = ReactDOM.findDOMNode(ref.inputField.current);
       if (isEmpty) {
-        $input_sig.value = "";
+        $input_sig.value = '';
       } else {
         $input_sig.value = base64;
       }
@@ -211,7 +211,7 @@ class ReactForm extends React.Component {
     if (!this.props.skip_validations) {
       errors = this.validateForm();
       // Publish errors, if any.
-      this.emitter.emit("formValidation", errors);
+      this.emitter.emit('formValidation', errors);
     }
 
     // Only submit if there are no errors.
@@ -237,17 +237,17 @@ class ReactForm extends React.Component {
     }
 
     data_items.forEach((item) => {
-      if (item.element === "Signature") {
+      if (item.element === 'Signature') {
         this._getSignatureImg(item);
       }
 
       if (this._isInvalid(item)) {
         errors.push(
-          `${item.label} ${intl.formatMessage({ id: "message.is-required" })}!`
+          `${item.label} ${intl.formatMessage({ id: 'message.is-required' })}!`
         );
       }
 
-      if (item.element === "EmailInput") {
+      if (item.element === 'EmailInput') {
         const ref = this.inputs[item.field_name];
         const emailValue = this._getItemValue(item, ref).value;
         if (emailValue) {
@@ -260,14 +260,14 @@ class ReactForm extends React.Component {
           if (!checkEmail) {
             errors.push(
               `${item.label} ${intl.formatMessage({
-                id: "message.invalid-email",
+                id: 'message.invalid-email',
               })}`
             );
           }
         }
       }
 
-      if (item.element === "PhoneNumber") {
+      if (item.element === 'PhoneNumber') {
         const ref = this.inputs[item.field_name];
         const phoneValue = this._getItemValue(item, ref).value;
         if (phoneValue) {
@@ -280,7 +280,7 @@ class ReactForm extends React.Component {
           if (!checkPhone) {
             errors.push(
               `${item.label} ${intl.formatMessage({
-                id: "message.invalid-phone-number",
+                id: 'message.invalid-phone-number',
               })}`
             );
           }
@@ -290,7 +290,7 @@ class ReactForm extends React.Component {
       if (this.props.validateForCorrectness && this._isIncorrect(item)) {
         errors.push(
           `${item.label} ${intl.formatMessage({
-            id: "message.was-answered-incorrectly",
+            id: 'message.was-answered-incorrectly',
           })}!`
         );
       }
@@ -344,12 +344,12 @@ class ReactForm extends React.Component {
   getCustomElement(item) {
     const { intl } = this.props;
 
-    if (!item.component || typeof item.component !== "function") {
+    if (!item.component || typeof item.component !== 'function') {
       item.component = Registry.get(item.key);
       if (!item.component) {
         console.error(
           `${item.element} ${intl.formatMessage({
-            id: "message.was-not-registered",
+            id: 'message.was-not-registered',
           })}`
         );
       }
@@ -373,7 +373,7 @@ class ReactForm extends React.Component {
 
   handleRenderSubmit = () => {
     const name = this.props.action_name || this.props.actionName;
-    const actionName = name || "Submit";
+    const actionName = name || 'Submit';
     const { submitButton = false } = this.props;
 
     return (
@@ -385,7 +385,7 @@ class ReactForm extends React.Component {
 
   handleRenderBack = () => {
     const name = this.props.back_name || this.props.backName;
-    const backName = name || "Cancel";
+    const backName = name || 'Cancel';
     const { backButton = false } = this.props;
 
     return (
@@ -419,30 +419,50 @@ class ReactForm extends React.Component {
       }
     });
 
+    const signs = data_items
+      .filter((x) => !x.parentId)
+      .map((item) => {
+        if (!item) return null;
+        if (!item.sign) return null;
+        const Input = FormElements[item.element];
+
+        item.sign.map((s) => (
+          <Input
+            handleChange={this.handleChange}
+            ref={(c) => (this.inputs['sign_' + item.field_name] = c)}
+            mutable={true}
+            key={`form_signs_${item.id}`}
+            data={item}
+            read_only={this.props.read_only}
+            defaultValue={this._getDefaultValue(item)}
+          />
+        ));
+      });
+
     const items = data_items
       .filter((x) => !x.parentId)
       .map((item) => {
         if (!item) return null;
         switch (item.element) {
-          case "TextInput":
-          case "EmailInput":
-          case "PhoneNumber":
-          case "NumberInput":
-          case "TextArea":
-          case "Dropdown":
-          case "DatePicker":
-          case "RadioButtons":
-          case "Rating":
-          case "Tags":
-          case "Range":
+          case 'TextInput':
+          case 'EmailInput':
+          case 'PhoneNumber':
+          case 'NumberInput':
+          case 'TextArea':
+          case 'Dropdown':
+          case 'DatePicker':
+          case 'RadioButtons':
+          case 'Rating':
+          case 'Tags':
+          case 'Range':
             return this.getInputElement(item);
-          case "CustomElement":
+          case 'CustomElement':
             return this.getCustomElement(item);
-          case "ThreeColumnRow":
+          case 'ThreeColumnRow':
             return this.getContainerElement(item, ThreeColumnRow);
-          case "TwoColumnRow":
+          case 'TwoColumnRow':
             return this.getContainerElement(item, TwoColumnRow);
-          case "Signature":
+          case 'Signature':
             return (
               <Signature
                 ref={(c) => (this.inputs[item.field_name] = c)}
@@ -453,7 +473,7 @@ class ReactForm extends React.Component {
                 defaultValue={this._getDefaultValue(item)}
               />
             );
-          case "Checkboxes":
+          case 'Checkboxes':
             return (
               <Checkboxes
                 ref={(c) => (this.inputs[item.field_name] = c)}
@@ -465,7 +485,7 @@ class ReactForm extends React.Component {
                 defaultValue={this._optionsDefaultValue(item)}
               />
             );
-          case "Image":
+          case 'Image':
             return (
               <Image
                 ref={(c) => (this.inputs[item.field_name] = c)}
@@ -476,7 +496,7 @@ class ReactForm extends React.Component {
                 defaultValue={this._getDefaultValue(item)}
               />
             );
-          case "Download":
+          case 'Download':
             return (
               <Download
                 download_path={this.props.download_path}
@@ -485,7 +505,7 @@ class ReactForm extends React.Component {
                 data={item}
               />
             );
-          case "Camera":
+          case 'Camera':
             return (
               <Camera
                 ref={(c) => (this.inputs[item.field_name] = c)}
@@ -496,7 +516,7 @@ class ReactForm extends React.Component {
                 defaultValue={this._getDefaultValue(item)}
               />
             );
-          case "FileUpload":
+          case 'FileUpload':
             return (
               <FileUpload
                 ref={(c) => (this.inputs[item.field_name] = c)}
@@ -513,7 +533,7 @@ class ReactForm extends React.Component {
       });
 
     const formTokenStyle = {
-      display: "none",
+      display: 'none',
     };
     return (
       <div>
@@ -542,6 +562,7 @@ class ReactForm extends React.Component {
               </div>
             )}
             {items}
+            {signs}
             <div className="btn-toolbar">
               {!this.props.hide_actions && this.handleRenderSubmit()}
               {!this.props.hide_actions &&

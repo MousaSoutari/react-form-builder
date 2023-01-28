@@ -15,6 +15,7 @@ class MultiColumnRowBase extends React.Component {
       controls,
       data,
       editModeOn,
+      editPermissionModeOn,
       getDataById,
       setAsChild,
       removeChild,
@@ -55,6 +56,7 @@ class MultiColumnRowBase extends React.Component {
                       col={i}
                       parentIndex={index}
                       editModeOn={editModeOn}
+                      editPermissionModeOn={editPermissionModeOn}
                       _onDestroy={() => removeChild(data, i)}
                       getDataById={getDataById}
                       setAsChild={setAsChild}
@@ -80,7 +82,7 @@ const TwoColumnRow = ({ data, class_name, ...rest }) => {
     data.childItems = [null, null];
     data.isContainer = true;
   }
-  return <MultiColumnRow {...rest} className={className} data={data} />;
+  return <MultiColumnRowBase {...rest} className={className} data={data} />;
 };
 
 const ThreeColumnRow = ({ data, class_name, ...rest }) => {

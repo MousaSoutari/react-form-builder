@@ -124,7 +124,85 @@
               &.form-control {
                 width: 84.26%;
                 float: left;
-                &[type="checkbox"] {
+                &[type='checkbox'] {
+                  border: none;
+                  box-shadow: none;
+                  margin-top: 0;
+                }
+              }
+              margin-right: 10px;
+            }
+            button {
+              float: left;
+              margin-right: 5px;
+            }
+            .dynamic-options-actions-buttons {
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    .edit-permission-form {
+      //position: fixed;
+      //background: #fafafa;
+      //padding: 30px;
+      //border-left: 0;
+      box-shadow: none;
+      // top: 0;
+      //left: -1000px;
+      //height: 100%;
+      // width: 0;
+      //width: 715px;
+      transition: 0.5s;
+      overflow-y: auto;
+
+      h4,
+      .dismiss-edit {
+        margin-bottom: 30px;
+      }
+      .dismiss-edit {
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 125%;
+      }
+      textarea {
+        width: 100%;
+      }
+      .form-group {
+        .form-group-range {
+          label {
+            display: block;
+          }
+          input {
+            display: inline-block;
+            width: 21%;
+            margin-left: 0;
+            &:last-of-type {
+              width: 78%;
+              margin-left: 1%;
+            }
+            &:first-of-type {
+              width: 21%;
+              margin-left: 0;
+            }
+          }
+        }
+      }
+      .dynamic-option-list {
+        margin-bottom: 15px;
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          li {
+            margin-top: 10px;
+            input {
+              &.form-control {
+                width: 84.26%;
+                float: left;
+                &[type='checkbox'] {
                   border: none;
                   box-shadow: none;
                   margin-top: 0;
@@ -192,7 +270,7 @@
             a {
               cursor: move;
             }
-            input[type="date"] {
+            input[type='date'] {
               height: 42px;
             }
             .react-star-rating {
@@ -276,20 +354,6 @@
         }
       }
     }
-    &.is-editing {
-      // .Sortable {
-      //   opacity: .5;
-      //   transition: opacity .25s ease-in;
-      // }
-      .edit-form {
-        z-index: 2000;
-        border-right: 1px solid #ddd;
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
-        // width: 80%;
-        //left: 0;
-        transition: 0.5s;
-      }
-    }
   }
 
   .react-form-builder-toolbar {
@@ -371,6 +435,19 @@
       width: 100%;
 
       .edit-form {
+        width: 100%;
+        overflow: scroll;
+
+        .btn {
+          margin-top: 10px;
+        }
+
+        .dynamic-option-list ul li input.form-control {
+          width: 100%;
+        }
+      }
+
+      .edit-permission-form {
         width: 100%;
         overflow: scroll;
 
@@ -502,7 +579,7 @@
   border-radius: 5px;
   padding: 25px;
   text-align: center;
-  font: 20pt bold, "Vollkorn";
+  font: 20pt bold, 'Vollkorn';
   color: #bbb;
 }
 
