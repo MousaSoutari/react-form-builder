@@ -2,16 +2,16 @@
  * <Preview />
  */
 
-import React from "react";
-import update from "immutability-helper";
-import store from "./stores/store";
-import FormElementsEdit from "./form-dynamic-edit";
-import SortableFormElements from "./sortable-form-elements";
-import CustomDragLayer from "./form-elements/component-drag-layer";
-import { Button } from "devextreme-react";
-import { SignPermission } from "./SignPermission/SignPermission";
-import Header from "./header/header";
-import HeaderPlaceHolder from "./header/headerPlaceHolder";
+import React from 'react';
+import update from 'immutability-helper';
+import store from './stores/store';
+import FormElementsEdit from './form-dynamic-edit';
+import SortableFormElements from './sortable-form-elements';
+import CustomDragLayer from './form-elements/component-drag-layer';
+import { Button } from 'devextreme-react';
+// import { SignPermission } from "./SignPermission/SignPermission";
+import Header from './header/header';
+import HeaderPlaceHolder from './header/headerPlaceHolder';
 const { PlaceHolder } = SortableFormElements;
 
 export default class Preview extends React.Component {
@@ -47,17 +47,17 @@ export default class Preview extends React.Component {
   componentDidMount() {
     const { data, url, saveUrl, saveAlways } = this.props;
     store.subscribe((state) => this._onUpdate(state.data));
-    store.dispatch("load", {
+    store.dispatch('load', {
       loadUrl: url,
       saveUrl,
       data: data || [],
       saveAlways,
     });
-    document.addEventListener("mousedown", this.editModeOff);
+    document.addEventListener('mousedown', this.editModeOff);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.editModeOff);
+    document.removeEventListener('mousedown', this.editModeOff);
   }
 
   editModeOff = (e) => {
@@ -76,7 +76,7 @@ export default class Preview extends React.Component {
   };
 
   _setValue(text) {
-    return text.replace(/[^A-Z0-9]+/gi, "_").toLowerCase();
+    return text.replace(/[^A-Z0-9]+/gi, '_').toLowerCase();
   }
 
   updateElement(element) {
@@ -93,7 +93,7 @@ export default class Preview extends React.Component {
 
     if (found) {
       this.seq = this.seq > 100000 ? 0 : this.seq + 1;
-      store.dispatch("updateOrder", data);
+      store.dispatch('updateOrder', data);
     }
   }
 
@@ -117,11 +117,11 @@ export default class Preview extends React.Component {
       item.childItems.forEach((x) => {
         const child = this.getDataById(x);
         if (child) {
-          store.dispatch("delete", child);
+          store.dispatch('delete', child);
         }
       });
     }
-    store.dispatch("delete", item);
+    store.dispatch('delete', item);
   }
 
   _onInsertAbove(item) {
@@ -133,11 +133,11 @@ export default class Preview extends React.Component {
       item.childItems.forEach((x) => {
         const child = this.getDataById(x);
         if (child) {
-          store.dispatch("copy", child);
+          store.dispatch('copy', child);
         }
       });
     }
-    store.dispatch("copy", item);
+    store.dispatch('copy', item);
   }
 
   getDataById(id) {
@@ -164,7 +164,7 @@ export default class Preview extends React.Component {
     // eslint-disable-next-line no-param-reassign
     item.childItems[col] = child.id;
     child.col = col;
-    store.dispatch("updateOrder", data);
+    store.dispatch('updateOrder', data);
     return true;
   }
 
@@ -198,7 +198,7 @@ export default class Preview extends React.Component {
     if (!this.getDataById(child.id)) {
       newData.push(child);
     }
-    store.dispatch("updateOrder", newData);
+    store.dispatch('updateOrder', newData);
   }
 
   removeChild(item, col) {
@@ -211,7 +211,7 @@ export default class Preview extends React.Component {
       item.childItems[col] = null;
       // delete oldItem.parentId;
       this.seq = this.seq > 100000 ? 0 : this.seq + 1;
-      store.dispatch("updateOrder", newData);
+      store.dispatch('updateOrder', newData);
       this.setState({ data: newData });
     }
   }
@@ -233,7 +233,7 @@ export default class Preview extends React.Component {
       // eslint-disable-next-line no-param-reassign
       item.index = newIndex;
       this.seq = this.seq > 100000 ? 0 : this.seq + 1;
-      store.dispatch("updateOrder", newData);
+      store.dispatch('updateOrder', newData);
       this.setState({ data: newData });
     }
   }
@@ -245,7 +245,7 @@ export default class Preview extends React.Component {
     } else {
       data.splice(hoverIndex, 0, item);
       this.saveData(item, hoverIndex, hoverIndex);
-      store.dispatch("insertItem", item);
+      store.dispatch('insertItem', item);
     }
   }
 
@@ -270,12 +270,12 @@ export default class Preview extends React.Component {
       },
     });
     this.setState(newData);
-    store.dispatch("updateOrder", newData.data);
+    store.dispatch('updateOrder', newData.data);
   }
 
   getElement(item, index) {
     if (item.custom) {
-      if (!item.component || typeof item.component !== "function") {
+      if (!item.component || typeof item.component !== 'function') {
         // eslint-disable-next-line no-param-reassign
         item.component = this.props.registry.get(item.key);
       }
@@ -336,7 +336,7 @@ export default class Preview extends React.Component {
   render() {
     let classes = this.props.className;
     if (this.props.editMode) {
-      classes += " is-editing";
+      classes += ' is-editing';
     }
     const data = this.state.data.filter((x) => !!x && !x.parentId);
     const items = data.map((item, index) => this.getElement(item, index));
@@ -376,7 +376,7 @@ Preview.defaultProps = {
   files: [],
   editMode: false,
   editElement: null,
-  className: "col-md-12 react-form-builder-preview float-left",
+  className: 'col-md-12 react-form-builder-preview float-left',
   renderEditForm: (props) => <FormElementsEdit {...props} />,
   // rightComponent: (props) => <div {...props} />,
 };

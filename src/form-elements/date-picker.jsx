@@ -182,7 +182,7 @@ class DatePicker extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }

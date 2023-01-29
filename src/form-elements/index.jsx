@@ -1,40 +1,40 @@
 // eslint-disable-next-line max-classes-per-file
-import fetch from "isomorphic-fetch";
-import { saveAs } from "file-saver";
-import React from "react";
-import Select from "react-select";
-import SignaturePad from "react-signature-canvas";
-import ReactBootstrapSlider from "react-bootstrap-slider";
+import fetch from 'isomorphic-fetch';
+import { saveAs } from 'file-saver';
+import React from 'react';
+import Select from 'react-select';
+import SignaturePad from 'react-signature-canvas';
+import ReactBootstrapSlider from 'react-bootstrap-slider';
 
-import StarRating from "./star-rating";
-import DatePicker from "./date-picker";
-import ComponentHeader from "./component-header";
-import ComponentLabel from "./component-label";
-import myxss from "./myxss";
-import ComponentRight from "./component-right";
-import ComponentSign from "./component-Sign";
+import StarRating from './star-rating';
+import DatePicker from './date-picker';
+import ComponentHeader from './component-header';
+import ComponentLabel from './component-label';
+import myxss from './myxss';
+// import ComponentRight from './component-right';
+// import ComponentSign from './component-sign';
 
 const FormElements = {};
 
 class Header extends React.Component {
   render() {
     // const headerClasses = `dynamic-input ${this.props.data.element}-input`;
-    let classNames = "static";
+    let classNames = 'static';
     if (this.props.data.bold) {
-      classNames += " bold";
+      classNames += ' bold';
     }
     if (this.props.data.italic) {
-      classNames += " italic";
+      classNames += ' italic';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -53,9 +53,9 @@ class Header extends React.Component {
             />
             <ComponentHeader {...this.props} />
           </div>
-          <ComponentRight {...this.props} />
+          {/* <ComponentRight {...this.props} /> */}
         </div>
-        <ComponentSign {...this.props} />
+        {/* <ComponentSign {...this.props} /> */}
       </div>
     );
   }
@@ -63,21 +63,21 @@ class Header extends React.Component {
 
 class Paragraph extends React.Component {
   render() {
-    let classNames = "static";
+    let classNames = 'static';
     if (this.props.data.bold) {
-      classNames += " bold";
+      classNames += ' bold';
     }
     if (this.props.data.italic) {
-      classNames += " italic";
+      classNames += ' italic';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -94,7 +94,7 @@ class Paragraph extends React.Component {
           />
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -102,22 +102,22 @@ class Paragraph extends React.Component {
 
 class Label extends React.Component {
   render() {
-    let classNames = "static";
+    let classNames = 'static';
     if (this.props.data.bold) {
-      classNames += " bold";
+      classNames += ' bold';
     }
     if (this.props.data.italic) {
-      classNames += " italic";
+      classNames += ' italic';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -134,7 +134,7 @@ class Label extends React.Component {
           />
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -142,14 +142,14 @@ class Label extends React.Component {
 
 class LineBreak extends React.Component {
   render() {
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -164,7 +164,7 @@ class LineBreak extends React.Component {
           <hr />
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -178,26 +178,26 @@ class TextInput extends React.Component {
 
   render() {
     const props = {};
-    props.type = "text";
-    props.className = "form-control";
+    props.type = 'text';
+    props.className = 'form-control';
     props.name = this.props.data.field_name;
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = this.inputField;
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
 
     return (
@@ -212,7 +212,7 @@ class TextInput extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -226,25 +226,25 @@ class EmailInput extends React.Component {
 
   render() {
     const props = {};
-    props.type = "text";
-    props.className = "form-control";
+    props.type = 'text';
+    props.className = 'form-control';
     props.name = this.props.data.field_name;
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = this.inputField;
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
 
     return (
@@ -259,7 +259,7 @@ class EmailInput extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -273,26 +273,26 @@ class PhoneNumber extends React.Component {
 
   render() {
     const props = {};
-    props.type = "tel";
-    props.className = "form-control";
+    props.type = 'tel';
+    props.className = 'form-control';
     props.name = this.props.data.field_name;
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = this.inputField;
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
 
     return (
@@ -307,7 +307,7 @@ class PhoneNumber extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -321,8 +321,8 @@ class NumberInput extends React.Component {
 
   render() {
     const props = {};
-    props.type = "number";
-    props.className = "form-control";
+    props.type = 'number';
+    props.className = 'form-control';
     props.name = this.props.data.field_name;
 
     if (this.props.mutable) {
@@ -331,16 +331,16 @@ class NumberInput extends React.Component {
     }
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -355,7 +355,7 @@ class NumberInput extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -369,25 +369,25 @@ class TextArea extends React.Component {
 
   render() {
     const props = {};
-    props.className = "form-control";
+    props.className = 'form-control';
     props.name = this.props.data.field_name;
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = this.inputField;
     }
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -402,7 +402,7 @@ class TextArea extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -416,7 +416,7 @@ class Dropdown extends React.Component {
 
   render() {
     const props = {};
-    props.className = "form-control";
+    props.className = 'form-control';
     props.name = this.props.data.field_name;
 
     if (this.props.mutable) {
@@ -425,16 +425,16 @@ class Dropdown extends React.Component {
     }
 
     if (this.props.read_only) {
-      props.disabled = "disabled";
+      props.disabled = 'disabled';
     }
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -458,7 +458,7 @@ class Dropdown extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -476,7 +476,7 @@ class Signature extends React.Component {
 
   clear = () => {
     if (this.state.defaultValue) {
-      this.setState({ defaultValue: "" });
+      this.setState({ defaultValue: '' });
     } else if (this.canvas.current) {
       this.canvas.current.clear();
     }
@@ -486,7 +486,7 @@ class Signature extends React.Component {
     const { defaultValue } = this.state;
     let canClear = !!defaultValue;
     const props = {};
-    props.type = "hidden";
+    props.type = 'hidden';
     props.name = this.props.data.field_name;
 
     if (this.props.mutable) {
@@ -501,14 +501,14 @@ class Signature extends React.Component {
       canClear = !this.props.read_only;
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     let sourceDataURL;
@@ -540,7 +540,7 @@ class Signature extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -556,8 +556,8 @@ class Tags extends React.Component {
 
   getDefaultValue(defaultValue, options) {
     if (defaultValue) {
-      if (typeof defaultValue === "string") {
-        const vals = defaultValue.split(",").map((x) => x.trim());
+      if (typeof defaultValue === 'string') {
+        const vals = defaultValue.split(',').map((x) => x.trim());
         return options.filter((x) => vals.indexOf(x.value) > -1);
       }
       return options.filter((x) => defaultValue.indexOf(x.value) > -1);
@@ -591,14 +591,14 @@ class Tags extends React.Component {
       props.ref = this.inputField;
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -613,7 +613,7 @@ class Tags extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -627,19 +627,19 @@ class Checkboxes extends React.Component {
 
   render() {
     const self = this;
-    let classNames = "custom-control custom-checkbox";
+    let classNames = 'custom-control custom-checkbox';
     if (this.props.data.inline) {
-      classNames += " option-inline";
+      classNames += ' option-inline';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -655,7 +655,7 @@ class Checkboxes extends React.Component {
               const props = {};
               props.name = `option_${option.key}`;
 
-              props.type = "checkbox";
+              props.type = 'checkbox';
               props.value = option.value;
               if (self.props.mutable) {
                 props.defaultChecked =
@@ -663,7 +663,7 @@ class Checkboxes extends React.Component {
                   self.props.defaultValue.indexOf(option.key) > -1;
               }
               if (this.props.read_only) {
-                props.disabled = "disabled";
+                props.disabled = 'disabled';
               }
               return (
                 <div className={classNames} key={this_key}>
@@ -689,7 +689,7 @@ class Checkboxes extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -703,19 +703,19 @@ class RadioButtons extends React.Component {
 
   render() {
     const self = this;
-    let classNames = "custom-control custom-radio";
+    let classNames = 'custom-control custom-radio';
     if (this.props.data.inline) {
-      classNames += " option-inline";
+      classNames += ' option-inline';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -731,7 +731,7 @@ class RadioButtons extends React.Component {
               const props = {};
               props.name = self.props.data.field_name;
 
-              props.type = "radio";
+              props.type = 'radio';
               props.value = option.value;
               if (self.props.mutable) {
                 props.defaultChecked =
@@ -740,7 +740,7 @@ class RadioButtons extends React.Component {
                     self.props.defaultValue.indexOf(option.value) > -1);
               }
               if (this.props.read_only) {
-                props.disabled = "disabled";
+                props.disabled = 'disabled';
               }
 
               return (
@@ -767,7 +767,7 @@ class RadioButtons extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -775,15 +775,15 @@ class RadioButtons extends React.Component {
 
 class Image extends React.Component {
   render() {
-    const style = this.props.data.center ? { textAlign: "center" } : null;
+    const style = this.props.data.center ? { textAlign: 'center' } : null;
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     return (
@@ -802,7 +802,7 @@ class Image extends React.Component {
           {!this.props.data.src && <div className="no-image">No Image</div>}
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -829,14 +829,14 @@ class Rating extends React.Component {
       props.ref = this.inputField;
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -851,7 +851,7 @@ class Rating extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -859,14 +859,14 @@ class Rating extends React.Component {
 
 class HyperLink extends React.Component {
   render() {
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     return (
@@ -882,7 +882,7 @@ class HyperLink extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -890,14 +890,14 @@ class HyperLink extends React.Component {
 
 class Download extends React.Component {
   render() {
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     return (
@@ -915,7 +915,7 @@ class Download extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -946,7 +946,7 @@ class Camera extends React.Component {
   };
 
   getImageSizeProps({ width, height }) {
-    const imgProps = { width: "100%" };
+    const imgProps = { width: '100%' };
     if (width) {
       imgProps.width =
         width < window.innerWidth ? width : 0.9 * window.innerWidth;
@@ -959,20 +959,20 @@ class Camera extends React.Component {
 
   render() {
     const imageStyle = {
-      objectFit: "scale-down",
-      objectPosition: this.props.data.center ? "center" : "left",
+      objectFit: 'scale-down',
+      objectPosition: this.props.data.center ? 'center' : 'left',
     };
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     const name = this.props.data.field_name;
-    const fileInputStyle = this.state.img ? { display: "none" } : null;
+    const fileInputStyle = this.state.img ? { display: 'none' } : null;
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
     let sourceDataURL;
     if (
@@ -1046,7 +1046,7 @@ class Camera extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -1082,40 +1082,40 @@ class FileUpload extends React.Component {
     e.preventDefault();
     const sourceUrl = this.props.defaultValue;
     const response = await fetch(sourceUrl, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json; charset=utf-8",
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
       },
-      responseType: "blob",
+      responseType: 'blob',
     });
-    const dispositionHeader = response.headers.get("Content-Disposition");
+    const dispositionHeader = response.headers.get('Content-Disposition');
     const resBlob = await response.blob();
     // eslint-disable-next-line no-undef
     const blob = new Blob([resBlob], {
-      type: this.props.data.fileType || response.headers.get("Content-Type"),
+      type: this.props.data.fileType || response.headers.get('Content-Type'),
     });
-    if (dispositionHeader && dispositionHeader.indexOf(";filename=") > -1) {
-      const fileName = dispositionHeader.split(";filename=")[1];
+    if (dispositionHeader && dispositionHeader.indexOf(';filename=') > -1) {
+      const fileName = dispositionHeader.split(';filename=')[1];
       saveAs(blob, fileName);
     } else {
-      const fileName = sourceUrl.substring(sourceUrl.lastIndexOf("/") + 1);
+      const fileName = sourceUrl.substring(sourceUrl.lastIndexOf('/') + 1);
       saveAs(response.url, fileName);
     }
   };
 
   render() {
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
     const name = this.props.data.field_name;
-    const fileInputStyle = this.state.fileUpload ? { display: "none" } : null;
+    const fileInputStyle = this.state.fileUpload ? { display: 'none' } : null;
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
     return (
       <div className={containerClasses}>
@@ -1139,7 +1139,7 @@ class FileUpload extends React.Component {
                   <input
                     name={name}
                     type="file"
-                    accept={this.props.data.fileType || "*"}
+                    accept={this.props.data.fileType || '*'}
                     className="image-upload"
                     onChange={this.displayFileUpload}
                   />
@@ -1155,12 +1155,12 @@ class FileUpload extends React.Component {
                   <div>
                     <div className="file-upload-preview">
                       <div
-                        style={{ display: "inline-block", marginRight: "5px" }}
+                        style={{ display: 'inline-block', marginRight: '5px' }}
                       >
                         {`Name: ${this.state.fileUpload.name}`}
                       </div>
                       <div
-                        style={{ display: "inline-block", marginLeft: "5px" }}
+                        style={{ display: 'inline-block', marginLeft: '5px' }}
                       >
                         {this.state.fileUpload.size.length > 6
                           ? `Size:  ${Math.ceil(
@@ -1185,7 +1185,7 @@ class FileUpload extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -1214,7 +1214,7 @@ class Range extends React.Component {
     const props = {};
     const name = this.props.data.field_name;
 
-    props.type = "range";
+    props.type = 'range';
     props.list = `tickmarks_${name}`;
     props.min = this.props.data.min_value;
     props.max = this.props.data.max_value;
@@ -1251,19 +1251,19 @@ class Range extends React.Component {
       option_props.key = `${props.list}_label_${idx}`;
       option_props.style = { width: `${w}%` };
       if (idx === datalist.length - 1) {
-        option_props.style = { width: `${w}%`, textAlign: "right" };
+        option_props.style = { width: `${w}%`, textAlign: 'right' };
       }
       return <label {...option_props}>{d}</label>;
     });
 
-    let containerClasses = "ContainerItem rfb-item";
+    let containerClasses = 'ContainerItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      containerClasses += " alwaysbreak";
+      containerClasses += ' alwaysbreak';
     }
 
-    let baseClasses = "SortableItem rfb-item";
+    let baseClasses = 'SortableItem rfb-item';
     if (this.props.data.pageBreakBefore) {
-      baseClasses += " alwaysbreak";
+      baseClasses += ' alwaysbreak';
     }
 
     return (
@@ -1287,7 +1287,7 @@ class Range extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }

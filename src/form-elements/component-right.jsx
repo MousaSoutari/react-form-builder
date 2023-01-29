@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import http from "../axiosClient";
-import { CheckBox } from "devextreme-react";
+import React, { useState, useEffect } from 'react';
+import http from '../axiosClient';
+import { CheckBox } from 'devextreme-react';
 // require("./scss/application.scss");
-import cBox from "devextreme/ui/check_box";
+import cBox from 'devextreme/ui/check_box';
 const ComponentRight = (props) => {
   const [signPermissionData, setSignPermissionData] = useState(null);
 
@@ -15,12 +15,12 @@ const ComponentRight = (props) => {
   useEffect(() => {
     for (let index = 0; index < signPermissionData?.length; index++) {
       let checkbox = cBox.getInstance(
-        document.getElementById("checkBox" + signPermissionData[index].id)
+        document.getElementById('checkBox' + signPermissionData[index].id)
       );
 
       if (signPermissionData[index].attributes.sign_permission.data === null)
-        checkbox.option("disabled", false);
-      else checkbox.option("disabled", true);
+        checkbox.option('disabled', false);
+      else checkbox.option('disabled', true);
     }
   }, [signPermissionData]);
 
@@ -29,16 +29,16 @@ const ComponentRight = (props) => {
       signPermissionData.forEach((element) => {
         if (element.attributes.sign_permission.data?.id === item.id) {
           let checkbox = cBox.getInstance(
-            document.getElementById("checkBox" + element.id)
+            document.getElementById('checkBox' + element.id)
           );
-          checkbox.option("value", false);
+          checkbox.option('value', false);
         }
       });
     }
 
     for (let index = 0; index < signPermissionData.length; index++) {
       let checkbox = cBox.getInstance(
-        document.getElementById("checkBox" + signPermissionData[index].id)
+        document.getElementById('checkBox' + signPermissionData[index].id)
       );
 
       if (signPermissionData[index].attributes.sign_permission.data != null) {
@@ -46,17 +46,17 @@ const ComponentRight = (props) => {
           signPermissionData[index].attributes.sign_permission.data.id ===
           item.id
         ) {
-          if (e === true) checkbox.option("disabled", false);
-          else checkbox.option("disabled", true);
+          if (e === true) checkbox.option('disabled', false);
+          else checkbox.option('disabled', true);
         } else {
           let dep = cBox.getInstance(
             document.getElementById(
-              "checkBox" +
+              'checkBox' +
                 signPermissionData[index].attributes.sign_permission.data.id
             )
           );
-          if (dep._props.value === true) checkbox.option("disabled", false);
-          else checkbox.option("disabled", true);
+          if (dep._props.value === true) checkbox.option('disabled', false);
+          else checkbox.option('disabled', true);
         }
       }
       // console.log(signPermissionData[index]);
@@ -69,7 +69,7 @@ const ComponentRight = (props) => {
       http()
         .request({
           url: `/sign-permissions?populate=*`,
-          method: "get",
+          method: 'get',
         })
         .then((response) => {
           setSignPermissionData(response.data.data);
@@ -91,7 +91,7 @@ const ComponentRight = (props) => {
       .replace(/\w+/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1);
       })
-      .replace(/\s/g, "");
+      .replace(/\s/g, '');
 
     if (e) {
       if (!props.data.sign) {
