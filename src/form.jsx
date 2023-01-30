@@ -177,12 +177,19 @@ class ReactForm extends React.Component {
   }
 
   _collectFormData(data) {
-    const formData = [];
+    const formData = { data: [], signs: [] };
     data.forEach((item) => {
       const item_data = this._collect(item);
       if (item_data) {
-        formData.push(item_data);
+        formData.data.push(item_data);
       }
+      item.sign.forEach((sign) => {
+        if (sign.clicked) formData.signs.push(sign);
+        else {
+          let i = formData.signs.find((s) => s.id === sign.id);
+          console.log(i);
+        }
+      });
     });
     return formData;
   }
@@ -419,30 +426,39 @@ class ReactForm extends React.Component {
       }
     });
 
-    const signs = data_items
-      .filter((x) => !x.parentId)
-      .map((item) => {
-        if (!item) return null;
-        if (!item.sign) return null;
-        const Input = FormElements[item.element];
+    const updateComponentSignButton = ({
+      style,
+      icon,
+      undoVisibility,
+      sign,
+      clicked,
+      // updated,
+      e,
+    }) => {
+      console.log('ComponentSign:updateSign');
 
-        item.sign.map((s) => (
-          <Input
-            handleChange={this.handleChange}
-            ref={(c) => (this.inputs['sign_' + item.field_name] = c)}
-            mutable={true}
-            key={`form_signs_${item.id}`}
-            data={item}
-            read_only={this.props.read_only}
-            defaultValue={this._getDefaultValue(item)}
-          />
-        ));
-      });
+      let data = this.props.data.find((l) => l);
+      let myItem = data.sign.find((s) => s.id === sign.id);
+      myItem.clicked = clicked;
+      myItem.signedBy = data.user;
+      if (clicked)
+        myItem.attributes.text = `${sign.attributes.displayName} ${data.user.username}`;
+      else myItem.attributes.text = sign.attributes.displayName;
+      myItem.style = style;
+      myItem.icon = icon;
+      myItem.undoVisibility = undoVisibility;
+
+      this.handleSubmit(e.event);
+      //return !updated;
+      //props.updateElement(data);
+      //updateSignDisable();
+    };
 
     const items = data_items
       .filter((x) => !x.parentId)
       .map((item) => {
         if (!item) return null;
+        item.onSignClicked = updateComponentSignButton.bind(this);
         switch (item.element) {
           case 'TextInput':
           case 'EmailInput':
@@ -535,6 +551,7 @@ class ReactForm extends React.Component {
     const formTokenStyle = {
       display: 'none',
     };
+
     return (
       <div>
         <FormValidator emitter={this.emitter} />
@@ -562,7 +579,6 @@ class ReactForm extends React.Component {
               </div>
             )}
             {items}
-            {signs}
             <div className="btn-toolbar">
               {!this.props.hide_actions && this.handleRenderSubmit()}
               {!this.props.hide_actions &&

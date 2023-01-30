@@ -179,7 +179,7 @@ const FormElementsPermission = (props) => {
 
         {signPermissionData?.map((item, i) => {
           const userID = item.id;
-          console.log(item);
+          //  console.log(item);
           return (
             <CheckBox
               className="CheckBoxField"

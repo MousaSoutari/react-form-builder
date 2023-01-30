@@ -167,7 +167,9 @@ const ComponentSign = (props) => {
               <ComponentSignButton
                 key={`ComponentSignButton${s.id}`}
                 data={s}
-                onClick={updateComponentSignButton}
+                onClick={
+                  props.data.onSignClicked ? props.data.onSignClicked : null
+                }
                 mutable={props.mutable}
               />
             );

@@ -7,10 +7,10 @@ import { TextBox } from 'devextreme-react';
 
 // require("./scss/application.scss");
 
-const ComponentSignButton = ({ data, onClick, mutable }) => {
+const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
   let undoRef = React.createRef();
   const [item] = useState(data);
-  const [updated, setUpdated] = useState(false);
+  // const [updated, setUpdated] = useState(false);
 
   // const [isDisabled, setIsDisabled] = useState(data.disabled);
 
@@ -37,7 +37,7 @@ const ComponentSignButton = ({ data, onClick, mutable }) => {
   // console.log('button');
   return (
     <div className="component-sign">
-      {updated ? '' : ''}
+      {/* {updated ? '' : ''} */}
       <Button
         className="CheckButton"
         key={item.id}
@@ -49,16 +49,18 @@ const ComponentSignButton = ({ data, onClick, mutable }) => {
         icon={item.icon}
         hint="Click to Approve"
         onClick={(e) => {
-          setUpdated(
-            onClick({
-              style: { backgroundColor: 'rgba(198, 239, 226, 1)' },
-              icon: 'check',
-              undoVisibility: true,
-              item: item,
-              clicked: true,
-              updated: updated,
-            })
-          );
+          //  setUpdated(
+          onClick({
+            style: { backgroundColor: 'rgba(198, 239, 226, 1)' },
+            icon: 'check',
+            undoVisibility: true,
+            sign: item,
+            clicked: true,
+            // updated: updated,
+            e: e,
+          });
+          // );
+          if (handleSubmit) handleSubmit();
         }}
       />
       <Button
@@ -73,16 +75,18 @@ const ComponentSignButton = ({ data, onClick, mutable }) => {
         hint="Click to undo"
         disabled={mutable ? item.undoDisabled : true}
         onClick={(e) => {
-          setUpdated(
-            onClick({
-              style: {},
-              icon: null,
-              undoVisibility: false,
-              item: item,
-              clicked: false,
-              updated: updated,
-            })
-          );
+          //  setUpdated(
+          onClick({
+            style: {},
+            icon: null,
+            undoVisibility: false,
+            sign: item,
+            clicked: false,
+            // updated: updated,
+            e: e,
+          });
+          //   );
+          if (handleSubmit) handleSubmit();
         }}
       ></Button>
     </div>
