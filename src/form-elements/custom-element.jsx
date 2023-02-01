@@ -41,7 +41,7 @@ class CustomElement extends Component {
       <div className={containerClasses}>
         <div className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
           {bare ? (
             <Element
@@ -50,18 +50,18 @@ class CustomElement extends Component {
               {...props}
             />
           ) : (
-            <div className="form-group">
+            <div className='form-group'>
               <Element
                 data={this.props.data}
                 {...this.props.data.props}
                 {...props}
               />
-              <ComponentLabel className="form-label" {...this.props} />
+              <ComponentLabel className='form-label' {...this.props} />
             </div>
           )}
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }

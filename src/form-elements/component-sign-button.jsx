@@ -9,7 +9,7 @@ import { TextBox } from 'devextreme-react';
 
 const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
   let undoRef = React.createRef();
-  const [item] = useState(data);
+  const [item, setItem] = useState(data);
   // const [updated, setUpdated] = useState(false);
 
   // const [isDisabled, setIsDisabled] = useState(data.disabled);
@@ -36,10 +36,10 @@ const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
   // }, [data.disabled, data.permissions, data.clicked]);
   // console.log('button');
   return (
-    <div className="component-sign">
+    <div className='component-sign'>
       {/* {updated ? '' : ''} */}
       <Button
-        className="CheckButton"
+        className='CheckButton'
         key={item.id}
         text={item.attributes.text || item.attributes.displayName}
         style={item.style}
@@ -47,10 +47,9 @@ const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
         name={`button${item.id}`}
         disabled={mutable ? item.disabled : true}
         icon={item.icon}
-        hint="Click to Approve"
+        hint='Click to Approve'
         onClick={(e) => {
-          //  setUpdated(
-          onClick({
+          let t = onClick({
             style: { backgroundColor: 'rgba(198, 239, 226, 1)' },
             icon: 'check',
             undoVisibility: true,
@@ -59,7 +58,7 @@ const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
             // updated: updated,
             e: e,
           });
-          // );
+          setItem(JSON.parse(JSON.stringify(t)));
           if (handleSubmit) handleSubmit();
         }}
       />
@@ -69,14 +68,13 @@ const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
         }}
         ref={undoRef}
         id={`undo-${item.id}`}
-        icon="undo"
-        stylingMode="text"
+        icon='undo'
+        stylingMode='text'
         visible={item.undoVisibility || false}
-        hint="Click to undo"
+        hint='Click to undo'
         disabled={mutable ? item.undoDisabled : true}
         onClick={(e) => {
-          //  setUpdated(
-          onClick({
+          let t = onClick({
             style: {},
             icon: null,
             undoVisibility: false,
@@ -85,7 +83,7 @@ const ComponentSignButton = ({ data, onClick, mutable, handleSubmit }) => {
             // updated: updated,
             e: e,
           });
-          //   );
+          setItem(t);
           if (handleSubmit) handleSubmit();
         }}
       ></Button>

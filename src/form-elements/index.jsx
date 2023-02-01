@@ -43,7 +43,7 @@ class Header extends React.Component {
           {this.props.data.CheckedBy?.map((l) => l.id)}
           <div style={{ ...this.props.style }} className={baseClasses}>
             {(this.props.index || this.props.index === 0) && (
-              <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+              <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
             )}
             <h3
               className={classNames}
@@ -53,7 +53,7 @@ class Header extends React.Component {
             />
             <ComponentHeader {...this.props} />
           </div>
-          {/* <ComponentRight {...this.props} /> */}
+          {/* {/* <ComponentRight {...this.props} /> */}
         </div>
         <ComponentSign {...this.props} />
       </div>
@@ -84,7 +84,7 @@ class Paragraph extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
           <p
             className={classNames}
@@ -94,7 +94,7 @@ class Paragraph extends React.Component {
           />
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -124,7 +124,7 @@ class Label extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
           <label
             className={classNames}
@@ -134,7 +134,7 @@ class Label extends React.Component {
           />
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -156,7 +156,7 @@ class LineBreak extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
           {(this.props.index || this.props.index === 0) && (
             <h4>horizontal line</h4>
@@ -164,7 +164,7 @@ class LineBreak extends React.Component {
           <hr />
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -204,15 +204,15 @@ class TextInput extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <input {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -251,15 +251,15 @@ class EmailInput extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <input {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -299,15 +299,15 @@ class PhoneNumber extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <input {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -347,15 +347,15 @@ class NumberInput extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <input {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -394,15 +394,15 @@ class TextArea extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <textarea {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -441,9 +441,9 @@ class Dropdown extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <select {...props}>
               {this.props.data.options.map((option) => {
@@ -458,7 +458,7 @@ class Dropdown extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -520,9 +520,9 @@ class Signature extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             {this.props.read_only === true || !!sourceDataURL ? (
               <img src={sourceDataURL} />
@@ -531,16 +531,16 @@ class Signature extends React.Component {
             )}
             {canClear && (
               <i
-                className="fas fa-times clear-signature"
+                className='fas fa-times clear-signature'
                 onClick={this.clear}
-                title="Clear Signature"
+                title='Clear Signature'
               ></i>
             )}
             <input {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -605,15 +605,15 @@ class Tags extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <Select {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -646,10 +646,10 @@ class Checkboxes extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
-            <ComponentLabel className="form-label" {...this.props} />
+          <div className='form-group'>
+            <ComponentLabel className='form-label' {...this.props} />
             {this.props.data.options.map((option) => {
               const this_key = `preview_${option.key}`;
               const props = {};
@@ -669,7 +669,7 @@ class Checkboxes extends React.Component {
                 <div className={classNames} key={this_key}>
                   <input
                     id={`fid_${this_key}`}
-                    className="custom-control-input"
+                    className='custom-control-input'
                     ref={(c) => {
                       if (c && self.props.mutable) {
                         self.options[`child_ref_${option.key}`] = c;
@@ -678,7 +678,7 @@ class Checkboxes extends React.Component {
                     {...props}
                   />
                   <label
-                    className="custom-control-label"
+                    className='custom-control-label'
                     htmlFor={`fid_${this_key}`}
                   >
                     {option.text}
@@ -689,7 +689,7 @@ class Checkboxes extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -722,10 +722,10 @@ class RadioButtons extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
-            <ComponentLabel className="form-label" {...this.props} />
+          <div className='form-group'>
+            <ComponentLabel className='form-label' {...this.props} />
             {this.props.data.options.map((option) => {
               const this_key = `preview_${option.key}`;
               const props = {};
@@ -747,7 +747,7 @@ class RadioButtons extends React.Component {
                 <div className={classNames} key={this_key}>
                   <input
                     id={`fid_${this_key}`}
-                    className="custom-control-input"
+                    className='custom-control-input'
                     ref={(c) => {
                       if (c && self.props.mutable) {
                         self.options[`child_ref_${option.key}`] = c;
@@ -756,7 +756,7 @@ class RadioButtons extends React.Component {
                     {...props}
                   />
                   <label
-                    className="custom-control-label"
+                    className='custom-control-label'
                     htmlFor={`fid_${this_key}`}
                   >
                     {option.text}
@@ -767,7 +767,7 @@ class RadioButtons extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -790,7 +790,7 @@ class Image extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style, style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
           {this.props.data.src && (
             <img
@@ -799,10 +799,10 @@ class Image extends React.Component {
               height={this.props.data.height}
             />
           )}
-          {!this.props.data.src && <div className="no-image">No Image</div>}
+          {!this.props.data.src && <div className='no-image'>No Image</div>}
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -843,15 +843,15 @@ class Rating extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <StarRating {...props} />
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -873,16 +873,16 @@ class HyperLink extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
-            <a target="_blank" href={this.props.data.href}>
+          <div className='form-group'>
+            <a target='_blank' href={this.props.data.href}>
               {this.props.data.content}
             </a>
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -904,9 +904,9 @@ class Download extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <a
               href={`${this.props.download_path}?id=${this.props.data.file_path}`}
             >
@@ -915,7 +915,7 @@ class Download extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -991,9 +991,9 @@ class Camera extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             {this.props.read_only === true &&
             this.props.defaultValue &&
@@ -1006,19 +1006,19 @@ class Camera extends React.Component {
                 />
               </div>
             ) : (
-              <div className="image-upload-container">
+              <div className='image-upload-container'>
                 <div style={fileInputStyle}>
                   <input
                     name={name}
-                    type="file"
-                    accept="image/*"
-                    capture="camera"
-                    className="image-upload"
+                    type='file'
+                    accept='image/*'
+                    capture='camera'
+                    className='image-upload'
                     onChange={this.displayImage}
                   />
-                  <div className="image-upload-control">
-                    <div className="btn btn-default">
-                      <i className="fas fa-camera"></i> Upload Photo
+                  <div className='image-upload-control'>
+                    <div className='btn btn-default'>
+                      <i className='fas fa-camera'></i> Upload Photo
                     </div>
                     <p>Select an image from your computer or device.</p>
                   </div>
@@ -1029,15 +1029,15 @@ class Camera extends React.Component {
                     <img
                       onLoad={() => URL.revokeObjectURL(this.state.previewImg)}
                       src={this.state.previewImg}
-                      height="100"
-                      className="image-upload-preview"
+                      height='100'
+                      className='image-upload-preview'
                     />
                     <br />
                     <div
-                      className="btn btn-image-clear"
+                      className='btn btn-image-clear'
                       onClick={this.clearImage}
                     >
-                      <i className="fas fa-times"></i> Clear Photo
+                      <i className='fas fa-times'></i> Clear Photo
                     </div>
                   </div>
                 )}
@@ -1046,7 +1046,7 @@ class Camera extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -1121,31 +1121,31 @@ class FileUpload extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             {this.props.read_only === true &&
             this.props.defaultValue &&
             this.props.defaultValue.length > 0 ? (
               <div>
-                <button className="btn btn-default" onClick={this.saveFile}>
-                  <i className="fas fa-download"></i> Download File
+                <button className='btn btn-default' onClick={this.saveFile}>
+                  <i className='fas fa-download'></i> Download File
                 </button>
               </div>
             ) : (
-              <div className="image-upload-container">
+              <div className='image-upload-container'>
                 <div style={fileInputStyle}>
                   <input
                     name={name}
-                    type="file"
+                    type='file'
                     accept={this.props.data.fileType || '*'}
-                    className="image-upload"
+                    className='image-upload'
                     onChange={this.displayFileUpload}
                   />
-                  <div className="image-upload-control">
-                    <div className="btn btn-default">
-                      <i className="fas fa-file"></i> Upload File
+                  <div className='image-upload-control'>
+                    <div className='btn btn-default'>
+                      <i className='fas fa-file'></i> Upload File
                     </div>
                     <p>Select a file from your computer or device.</p>
                   </div>
@@ -1153,7 +1153,7 @@ class FileUpload extends React.Component {
 
                 {this.state.fileUpload && (
                   <div>
-                    <div className="file-upload-preview">
+                    <div className='file-upload-preview'>
                       <div
                         style={{ display: 'inline-block', marginRight: '5px' }}
                       >
@@ -1173,10 +1173,10 @@ class FileUpload extends React.Component {
                     </div>
                     <br />
                     <div
-                      className="btn btn-file-upload-clear"
+                      className='btn btn-file-upload-clear'
                       onClick={this.clearFileUpload}
                     >
-                      <i className="fas fa-times"></i> Clear File
+                      <i className='fas fa-times'></i> Clear File
                     </div>
                   </div>
                 )}
@@ -1185,7 +1185,7 @@ class FileUpload extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
@@ -1270,24 +1270,24 @@ class Range extends React.Component {
       <div className={containerClasses}>
         <div style={{ ...this.props.style }} className={baseClasses}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
-            <div className="range">
-              <div className="clearfix">
-                <span className="float-left">{this.props.data.min_label}</span>
-                <span className="float-right">{this.props.data.max_label}</span>
+            <div className='range'>
+              <div className='clearfix'>
+                <span className='float-left'>{this.props.data.min_label}</span>
+                <span className='float-right'>{this.props.data.max_label}</span>
               </div>
               <ReactBootstrapSlider {...props} />
             </div>
-            <div className="visible_marks">{visible_marks}</div>
-            <input name={name} value={this.state.value} type="hidden" />
+            <div className='visible_marks'>{visible_marks}</div>
+            <input name={name} value={this.state.value} type='hidden' />
             <datalist id={props.list}>{_datalist}</datalist>
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }

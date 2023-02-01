@@ -132,32 +132,32 @@ class DatePicker extends React.Component {
       <div className={containerClasses}>
         <div className={baseClasses} style={{ ...this.props.style }}>
           {(this.props.index || this.props.index === 0) && (
-            <h3 className="sortableItem-sequence">{this.props.index + 1}</h3>
+            <h3 className='sortableItem-sequence'>{this.props.index + 1}</h3>
           )}
-          <div className="form-group">
+          <div className='form-group'>
             <ComponentLabel {...this.props} />
             <div>
               {readOnly && (
                 <input
-                  type="text"
+                  type='text'
                   name={props.name}
                   ref={props.ref}
                   readOnly={readOnly}
                   placeholder={this.state.placeholder}
                   value={this.state.value}
-                  className="form-control"
+                  className='form-control'
                 />
               )}
               {iOS && !readOnly && (
                 <input
-                  type="date"
+                  type='date'
                   name={props.name}
                   ref={props.ref}
                   onChange={this.handleChange}
-                  dateFormat="MM/DD/YYYY"
+                  dateFormat='MM/DD/YYYY'
                   placeholder={this.state.placeholder}
                   value={this.state.value}
-                  className="form-control"
+                  className='form-control'
                 />
               )}
               {!iOS && !readOnly && (
@@ -167,14 +167,14 @@ class DatePicker extends React.Component {
                   onChange={this.handleChange}
                   selected={this.state.internalValue}
                   todayButton={'Today'}
-                  className="form-control"
+                  className='form-control'
                   isClearable={true}
                   showTimeSelect={showTimeSelect}
                   showTimeSelectOnly={showTimeSelectOnly}
                   showTimeInput={showTimeInput}
                   dateFormat={this.state.formatMask}
-                  portalId="root-portal"
-                  autoComplete="off"
+                  portalId='root-portal'
+                  autoComplete='off'
                   placeholderText={placeholderText}
                 />
               )}
@@ -182,7 +182,7 @@ class DatePicker extends React.Component {
           </div>
           <ComponentHeader {...this.props} />
         </div>
-        <ComponentRight {...this.props} />
+        {/* <ComponentRight {...this.props} /> */}
       </div>
     );
   }
