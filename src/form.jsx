@@ -87,6 +87,87 @@ class ReactForm extends React.Component {
     return $item;
   }
 
+  updateSignDisable() {
+    // console.log('props.data.sign', props.data.sign);
+    for (let index = 0; index < props.data.sign?.length; index++) {
+      let buttonsRelatedToThisSign = props.data.sign.filter(
+        (s) =>
+          s.attributes.sign_permission?.data?.id === props.data.sign[index].id
+      );
+      if (props.data.sign[index].clicked === undefined)
+        props.data.sign[index].clicked = false;
+      if (props.data.sign[index].attributes.sign_permission?.data === null) {
+        //Check if sign permission is null then enable the button unless its clicked already
+        props.data.sign[index].disabled = false;
+
+        if (props.data.sign[index].clicked === true) {
+          props.data.sign[index].disabled = true;
+          //check if next level approved then disable undo and button
+          props.data.sign[index].undoDisabled = false;
+
+          if (buttonsRelatedToThisSign) {
+            for (const element of buttonsRelatedToThisSign) {
+              if (element.clicked === true)
+                props.data.sign[index].undoDisabled = true;
+            }
+          }
+        }
+        if (props.data.sign[index].disabled || props.data.sign[index].clicked) {
+          props.data.sign[index].disabled = true;
+          return;
+        }
+        if (
+          !(
+            (props.data.sign[index].attributes.permissions &&
+              props.data.sign[index].attributes.permissions.findIndex(
+                (r) => r.key === props.data.user.role.id
+              ) >= 0) ||
+            props.data.sign[index].attributes.permissions === undefined ||
+            props.data.sign[index].attributes.permissions.length === 0
+          )
+        )
+          props.data.sign[index].disabled = true;
+        else props.data.sign[index].disabled = false;
+      } else {
+        props.data.sign[index].disabled = false;
+        let depSign = props.data.sign.find(
+          (s) =>
+            s.id === props.data.sign[index]?.attributes.sign_permission?.data.id
+        );
+        //console.log('depSign', depSign.clicked);
+
+        if (depSign && depSign.clicked === true)
+          props.data.sign[index].disabled = false;
+        else props.data.sign[index].disabled = true;
+
+        if (props.data.sign[index].disabled || props.data.sign[index].clicked) {
+          props.data.sign[index].disabled = true;
+          return;
+        }
+        if (
+          !(
+            (props.data.sign[index].attributes.permissions &&
+              props.data.sign[index].attributes.permissions.findIndex(
+                (r) => r.key === props.data.user.role.id
+              ) >= 0) ||
+            props.data.sign[index].attributes.permissions === undefined ||
+            props.data.sign[index].attributes.permissions.length === 0
+          )
+        )
+          props.data.sign[index].disabled = true;
+        else props.data.sign[index].disabled = false;
+        //console.log('props.data.sign', props.data.sign);
+
+        // if (buttonsRelatedToThisSign) {
+        //   for (const element of buttonsRelatedToThisSign) {
+        //     if (element.clicked === true)
+        //       props.data.sign[index].undoDisabled = true;
+        //   }
+        // }
+      }
+    }
+  }
+
   _isIncorrect(item) {
     let incorrect = false;
     if (item.canHaveAnswer) {
@@ -188,6 +269,7 @@ class ReactForm extends React.Component {
         else {
           let i = formData.signs.find((s) => s.id === sign.id);
           console.log(i);
+          //delete sign
         }
       });
     });
@@ -385,7 +467,7 @@ class ReactForm extends React.Component {
 
     return (
       submitButton || (
-        <input type="submit" className="btn btn-big" value={actionName} />
+        <input type='submit' className='btn btn-big' value={actionName} />
       )
     );
   };
@@ -399,7 +481,7 @@ class ReactForm extends React.Component {
       backButton || (
         <a
           href={this.props.back_action}
-          className="btn btn-default btn-cancel btn-big"
+          className='btn btn-default btn-cancel btn-big'
         >
           {backName}
         </a>
@@ -432,11 +514,11 @@ class ReactForm extends React.Component {
       undoVisibility,
       sign,
       clicked,
+      disabled,
       // updated,
       e,
     }) => {
       console.log('ComponentSign:updateSign');
-
       let data = this.props.data.find((l) => l);
       let myItem = data.sign.find((s) => s.id === sign.id);
       myItem.clicked = clicked;
@@ -449,9 +531,9 @@ class ReactForm extends React.Component {
       myItem.undoVisibility = undoVisibility;
 
       this.handleSubmit(e.event);
-      //return !updated;
+      return myItem;
       //props.updateElement(data);
-      //updateSignDisable();
+      // updateSignDisable;
     };
 
     const items = data_items
@@ -555,9 +637,9 @@ class ReactForm extends React.Component {
     return (
       <div>
         <FormValidator emitter={this.emitter} />
-        <div className="react-form-builder-form">
+        <div className='react-form-builder-form'>
           <form
-            encType="multipart/form-data"
+            encType='multipart/form-data'
             ref={(c) => (this.form = c)}
             action={this.props.form_action}
             onSubmit={this.handleSubmit.bind(this)}
@@ -565,21 +647,21 @@ class ReactForm extends React.Component {
           >
             {this.props.authenticity_token && (
               <div style={formTokenStyle}>
-                <input name="utf8" type="hidden" value="&#x2713;" />
+                <input name='utf8' type='hidden' value='&#x2713;' />
                 <input
-                  name="authenticity_token"
-                  type="hidden"
+                  name='authenticity_token'
+                  type='hidden'
                   value={this.props.authenticity_token}
                 />
                 <input
-                  name="task_id"
-                  type="hidden"
+                  name='task_id'
+                  type='hidden'
                   value={this.props.task_id}
                 />
               </div>
             )}
             {items}
-            <div className="btn-toolbar">
+            <div className='btn-toolbar'>
               {!this.props.hide_actions && this.handleRenderSubmit()}
               {!this.props.hide_actions &&
                 this.props.back_action &&
